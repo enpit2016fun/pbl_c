@@ -4,18 +4,19 @@ import CoreLocation
 class ViewController: UIViewController ,CLLocationManagerDelegate {
   var locationLabel: UILabel!
   var lm: CLLocationManager! = nil
-  var myImage = UIImage(named:"compass.jpg")
+  var myImage = UIImage(named:"方角.png")
   
   override func viewDidLoad() {
     super.viewDidLoad()
     // 方角を表示するラベルを作成する
     locationLabel = UILabel(frame: CGRectMake(0,0,150,50))
-    locationLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height/5)
+    locationLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height - 100)
     locationLabel.textAlignment = NSTextAlignment.Center
+    locationLabel.font = UIFont.systemFontOfSize(30)
     self.view.addSubview(locationLabel)
     // ボタンを生成する.
     let nextButton: UIButton = UIButton(frame: CGRectMake(0,0,150,50))
-    nextButton.backgroundColor = UIColor.redColor();
+    nextButton.backgroundColor = UIColor.orangeColor();
     nextButton.layer.masksToBounds = true
     nextButton.setTitle("この方角で撮影", forState: .Normal)
     nextButton.layer.cornerRadius = 20.0
@@ -64,7 +65,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
   // コンパスの値を受信
   func locationManager(manager:CLLocationManager, didUpdateHeading newHeading:CLHeading) {
     // 画像を回転する.
-    let myRotateView:UIImageView = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 150 , y: self.view.bounds.height/3, width: 300, height: 300))
+    let myRotateView:UIImageView = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 100 , y: self.view.bounds.height/5, width: 200, height: 200))
     
     // UIImageViewに画像を設定する.
     myRotateView.image = myImage

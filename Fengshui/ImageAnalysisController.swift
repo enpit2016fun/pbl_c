@@ -66,7 +66,8 @@ class ImageAnalysisController: UIViewController {
   
   func getColor(){
     //parameter = ["image_path":"https://pbs.twimg.com/profile_images/459921170251264000/ax4FMwXA.jpeg"]
-    Alamofire.request(.GET,"https://secure-mesa-92119.herokuapp.com/?image_path=https://pbs.twimg.com/profile_images/459921170251264000/ax4FMwXA.jpeg")
+    parameter = ["image_path":Image2String(self.takenImage!)!]
+    Alamofire.request(.GET,"https://secure-mesa-92119.herokuapp.com/?image_path=",parameters: parameter)
       .responseJSON { respon in
         guard let object = respon.result.value else {
           print(respon.result.value)
@@ -100,6 +101,26 @@ class ImageAnalysisController: UIViewController {
     self.view.addSubview(imageView)
   }
   
+  func Image2String(image:UIImage) -> String? {
+    
+    //画像をNSDataに変換
+    let data:NSData = UIImagePNGRepresentation(self.takenImage!)!
+    
+    //NSDataへの変換が成功していたら
+    if let pngData:NSData = data {
+      
+      //BASE64のStringに変換する
+      let encodeString:String =
+        pngData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
+      
+      return encodeString
+      
+    }
+    
+    return nil
+    
+  }
+
   
   /*
    // MARK: - Navigation
