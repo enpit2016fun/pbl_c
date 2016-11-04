@@ -155,7 +155,7 @@ class CaptureController: UIViewController, UIGestureRecognizerDelegate {
     // 文字と文字色、背景色をセット
     labelHello.text = "画面タップで撮影&アルバム保存"
     labelHello.textColor = UIColor.whiteColor()
-    labelHello.backgroundColor = UIColor.init(colorLiteralRed: 0.8, green: 0.2, blue: 0.3, alpha: 1.0)
+    labelHello.backgroundColor = UIColor.orangeColor()
     
     // 文字を中央寄せ、ウィンドウ中央に配置
     labelHello.textAlignment = NSTextAlignment.Center
