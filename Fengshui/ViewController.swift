@@ -6,11 +6,15 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
   var lm: CLLocationManager! = nil
   var myImage = UIImage(named:"方角.png")
   var myRotateView:UIImageView! = nil
+  var selectFortune:String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.backgroundColor = UIColor.whiteColor()
     myRotateView = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 100 , y: self.view.bounds.height/6, width: 200, height: 200))
     // UIImageViewに画像を設定する.
+    print(selectFortune!)
+    
     myRotateView.image = myImage
     // Viewに張りつけ.
     self.view.addSubview(myRotateView)
