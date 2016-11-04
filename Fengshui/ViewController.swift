@@ -20,16 +20,16 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
     self.view.addSubview(myRotateView)
     // 方角を表示するラベルを作成する
     locationLabel = UILabel(frame: CGRectMake(0,0,300,50))
-    locationLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height - 150)
+    locationLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.7)
     locationLabel.textAlignment = NSTextAlignment.Center
-    locationLabel.font = UIFont.systemFontOfSize(25)
+    locationLabel.font = UIFont(name:"HiraKakuProN-W6",size:25)
     self.view.addSubview(locationLabel)
     // ボタンを生成する.
-    let nextButton: UIButton = UIButton(frame: CGRectMake(0,0,150,50))
+    let nextButton: UIButton = UIButton(frame: CGRectMake(0,0,self.view.bounds.width * 0.8,50))
     nextButton.backgroundColor = UIColor.orangeColor();
     nextButton.layer.masksToBounds = true
     nextButton.setTitle("OK", forState: .Normal)
-    nextButton.layer.cornerRadius = 20.0
+    nextButton.layer.cornerRadius = 10.0
     nextButton.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
     nextButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchUpInside)
     // ボタンを追加する.

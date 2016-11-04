@@ -10,7 +10,8 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+  var selectedFortune:String?
+  var selectedDirection:String?
   var window: UIWindow?
   // この変数を他のクラスからアクセスする
   //　データ受け渡しグローバルフィールド。空要素（nil）を追加する
