@@ -16,11 +16,12 @@
 		4E13051B1DB9A2F400D198D0 /* CaptureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13051A1DB9A2F400D198D0 /* CaptureController.swift */; };
 		4E13051D1DB9A43A00D198D0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E13051C1DB9A43A00D198D0 /* CoreLocation.framework */; };
 		4E13051F1DB9E8FD00D198D0 /* ImageAnalysisController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13051E1DB9E8FD00D198D0 /* ImageAnalysisController.swift */; };
+		4EA4C8681DD445E400921EEE /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4C8661DD43F8600921EEE /* CircleView.swift */; };
 		58D411FED05B6E3196C9CFFD /* Pods_Fengshui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9CAA3A7E470DB95AAF0635 /* Pods_Fengshui.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4E0869681DCC493600E8FCFB /* SelectFortuneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectFortuneController.swift; path = ../SelectFortuneController.swift; sourceTree = "<group>"; };
+		4E0869681DCC493600E8FCFB /* SelectFortuneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFortuneController.swift; sourceTree = "<group>"; };
 		4E1305031DB99F7200D198D0 /* Fengshui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fengshui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1305061DB99F7200D198D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E1305081DB99F7200D198D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,6 +32,7 @@
 		4E13051A1DB9A2F400D198D0 /* CaptureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureController.swift; sourceTree = "<group>"; };
 		4E13051C1DB9A43A00D198D0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4E13051E1DB9E8FD00D198D0 /* ImageAnalysisController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAnalysisController.swift; sourceTree = "<group>"; };
+		4EA4C8661DD43F8600921EEE /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		6698CB2BCAFD7C1770477F7F /* Pods-Fengshui.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fengshui.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fengshui/Pods-Fengshui.release.xcconfig"; sourceTree = "<group>"; };
 		BBA21F6F0FFA1C2AF6C00ECF /* Pods-Fengshui.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fengshui.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fengshui/Pods-Fengshui.debug.xcconfig"; sourceTree = "<group>"; };
 		BE9CAA3A7E470DB95AAF0635 /* Pods_Fengshui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fengshui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 				4E1305081DB99F7200D198D0 /* ViewController.swift */,
 				4E13051A1DB9A2F400D198D0 /* CaptureController.swift */,
 				4E13051E1DB9E8FD00D198D0 /* ImageAnalysisController.swift */,
+				4EA4C8661DD43F8600921EEE /* CircleView.swift */,
 				4E13050A1DB99F7200D198D0 /* Main.storyboard */,
 				4E13050D1DB99F7200D198D0 /* Assets.xcassets */,
 				4E13050F1DB99F7200D198D0 /* LaunchScreen.storyboard */,
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EA4C8681DD445E400921EEE /* CircleView.swift in Sources */,
 				4E0869691DCC493600E8FCFB /* SelectFortuneController.swift in Sources */,
 				4E13051B1DB9A2F400D198D0 /* CaptureController.swift in Sources */,
 				4E1305091DB99F7200D198D0 /* ViewController.swift in Sources */,

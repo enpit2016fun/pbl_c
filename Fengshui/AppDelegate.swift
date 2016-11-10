@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // この変数を他のクラスからアクセスする
   //　データ受け渡しグローバルフィールド。空要素（nil）を追加する
   var myImage:UIImage? = nil
+  var circleColor:UIColor? = nil
+  var score:Double? = nil
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

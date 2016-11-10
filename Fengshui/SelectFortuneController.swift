@@ -119,7 +119,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     // 遷移するViewを定義する.
     let mySecondViewController: ViewController = ViewController()
     mySecondViewController.selectFortune = "love"
-    var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
+    let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "love" //appDelegateの変数を操作
     // アニメーションを設定する.
     mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
@@ -131,7 +131,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     // 遷移するViewを定義する.
     let mySecondViewController: ViewController = ViewController()
     mySecondViewController.selectFortune = "job"
-    var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
+    let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "job" //appDelegateの変数を操作    // アニメーションを設定する.
     mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
@@ -142,7 +142,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     // 遷移するViewを定義する.
     let mySecondViewController: ViewController = ViewController()
     mySecondViewController.selectFortune = "life"
-    var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
+    let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "life" //appDelegateの変数を操作
     // アニメーションを設定する.
     mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
