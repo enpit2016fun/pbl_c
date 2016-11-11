@@ -21,7 +21,7 @@ extension NSMutableData {
 
 
 
-class ImageAnalysisController: UIViewController {
+class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   var ResultLabel: UILabel!
   var PictureView: UIImageView!
   var takenImage:UIImage?
@@ -93,6 +93,8 @@ class ImageAnalysisController: UIViewController {
     self.view.addSubview(view3)
     self.view.addSubview(view4)
     
+    
+    
     // 家具のサイトに飛ぶラベルを作成する
     furnitureLabel = UILabel(frame: CGRectMake(0,0,200,80))
     furnitureLabel.layer.position = CGPoint(x: self.view4.bounds.width/2 , y:self.view4.bounds.height * 0.2)
@@ -125,9 +127,18 @@ class ImageAnalysisController: UIViewController {
     fortuneLabel.textColor = UIColor.lightGrayColor()
     self.view1.addSubview(fortuneLabel)
     
- 
-
+    let PictureView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+    PictureView.image = UIImage(named:"矢印.png")
+    PictureView.center = CGPoint(x:self.view.bounds.width * 0.75,y:self.view.bounds.height * 0.88)
+    PictureView.userInteractionEnabled = true
+    let pictureTap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ImageAnalysisController.PictureTapAction(_:)))
     
+    pictureTap.delegate = self
+    
+    PictureView.addGestureRecognizer(pictureTap)
+    // Viewに張りつけ.
+    self.view.addSubview(PictureView)
+
     
     
     //選んだ運勢に合わせて画像を表示
@@ -189,6 +200,16 @@ class ImageAnalysisController: UIViewController {
     print("end")
   }
   
+  func PictureTapAction(sender: UITapGestureRecognizer){
+    // 遷移するViewを定義する.
+    let mySecondViewController: FindFurnitureController = FindFurnitureController()
+    // アニメーションを設定する.
+    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    // Viewの移動する.
+    self.presentViewController(mySecondViewController, animated: true, completion: nil)
+  }
+
+  
   
   
   func addCircleView() {
@@ -235,8 +256,6 @@ class ImageAnalysisController: UIViewController {
             //self.view.addSubview(self.colorView)
             appDelegate.score = score
             self.addCircleView()
-            
-            
             
             // パーセンテージを表示するラベルを作成する
             self.parsentLabel = UILabel(frame: CGRectMake(0,0,100,50))
