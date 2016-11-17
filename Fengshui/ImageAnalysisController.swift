@@ -47,6 +47,8 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   var luckyLabel: UILabel!
   var parsentLabel: UILabel!
   var isSuccess:Bool = false
+  var fortuneArray:[Fortune] = []
+  
   
   //  var takenImage_accessor: UIImage? {
   //    get {
@@ -68,10 +70,10 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
+    fortuneArray = appDelegate.farray
     // Viewの背景色を白色にする
     self.view.backgroundColor = UIColor.whiteColor()
-    let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     selectedFortune = appDelegate.selectedFortune
     //Viewを並べる
     view1 = UIView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2 * 0.85))
@@ -117,12 +119,14 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     luckyLabel.textAlignment = NSTextAlignment.Center
     luckyLabel.font = UIFont(name:"HiraKakuProN-W6",size:13)
     luckyLabel.textColor = UIColor.lightGrayColor()
-    luckyLabel.text = "ラッキーカラー：黄"
+    //luckyLabel.text = "ラッキーカラー：黄"
     self.view3.addSubview(luckyLabel)
     
     self.luckyView = UIView(frame: CGRectMake(0,0,self.view.bounds.width/5.5,self.view.bounds.width/5.5))
     self.luckyView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.85)
-    self.luckyView.backgroundColor = UIColor.yellowColor()
+    luckyView.layer.borderWidth = 0.5
+    luckyView.layer.borderColor = UIColor.blackColor().CGColor
+    //self.luckyView.backgroundColor = UIColor.yellowColor()
     self.view.addSubview(luckyView)
     
     // 運勢タイプを表示するラベルを作成する
@@ -155,6 +159,18 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       loveView.image = loveImage
       self.view1.addSubview(loveView)
       fortuneLabel.text = "恋愛運"
+      for farr in fortuneArray {
+        print(farr.name!)
+        if (farr.name! == "恋愛運"){
+          self.luckyView.backgroundColor = farr.color
+          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.view3.addSubview(luckyLabel)
+          print(farr.name)
+          print(farr.color)
+          self.view.addSubview(luckyView)
+        }
+      }
+      
     }else if selectedFortune! == "job" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       jobView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
@@ -162,6 +178,18 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       jobView.image = jobImage
       self.view1.addSubview(jobView)
       fortuneLabel.text = "仕事運"
+      for farr in fortuneArray {
+        print(farr.name!)
+        if (farr.name! == "仕事運"){
+          self.luckyView.backgroundColor = farr.color
+          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.view3.addSubview(luckyLabel)
+          print(farr.name)
+          print(farr.color)
+          self.view.addSubview(luckyView)
+        }
+      }
+
     }else if selectedFortune! == "money" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       jobView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
@@ -169,6 +197,19 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       jobView.image = moneyImage
       self.view1.addSubview(jobView)
       fortuneLabel.text = "金運"
+      for farr in fortuneArray {
+        print(farr.name!)
+        if (farr.name! == "金運"){
+          self.luckyView.backgroundColor = farr.color
+          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.view3.addSubview(luckyLabel)
+          print(farr.name)
+          print(farr.color)
+          self.view.addSubview(luckyView)
+        }
+      }
+
+      
     }else if selectedFortune! == "deposit" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       jobView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
@@ -176,6 +217,18 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       jobView.image = depositImage
       self.view1.addSubview(jobView)
       fortuneLabel.text = "貯金運"
+      for farr in fortuneArray {
+        print(farr.name!)
+        if (farr.name! == "貯金運"){
+          self.luckyView.backgroundColor = farr.color
+          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.view3.addSubview(luckyLabel)
+          print(farr.name)
+          print(farr.color)
+          self.view.addSubview(luckyView)
+        }
+      }
+
     }else if selectedFortune! == "health" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       jobView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
@@ -183,6 +236,18 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       jobView.image = healthImage
       self.view1.addSubview(jobView)
       fortuneLabel.text = "健康運"
+      for farr in fortuneArray {
+        print(farr.name!)
+        if (farr.name! == "健康運"){
+          self.luckyView.backgroundColor = farr.color
+          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.view3.addSubview(luckyLabel)
+          print(farr.name)
+          print(farr.color)
+          self.view.addSubview(luckyView)
+        }
+      }
+
     }else if selectedFortune! == "family" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       jobView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
@@ -190,6 +255,18 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       jobView.image = familyImage
       self.view1.addSubview(jobView)
       fortuneLabel.text = "家族運"
+      for farr in fortuneArray {
+        print(farr.name!)
+        if (farr.name! == "家族運"){
+          self.luckyView.backgroundColor = farr.color
+          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.view3.addSubview(luckyLabel)
+          print(farr.name)
+          print(farr.color)
+          self.view.addSubview(luckyView)
+        }
+      }
+
     }else if selectedFortune! == "beauty" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       jobView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
@@ -197,6 +274,18 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       jobView.image = beautyImage
       self.view1.addSubview(jobView)
       fortuneLabel.text = "美容運"
+      for farr in fortuneArray {
+        print(farr.name!)
+        if (farr.name! == "美容運"){
+          self.luckyView.backgroundColor = farr.color
+          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.view3.addSubview(luckyLabel)
+          print(farr.name)
+          print(farr.color)
+          self.view.addSubview(luckyView)
+        }
+      }
+
     }else {
       let lifeView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       lifeView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
@@ -204,6 +293,18 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       lifeView.image = lifeImage
       self.view1.addSubview(lifeView)
       fortuneLabel.text = "人生運"
+      for farr in fortuneArray {
+        print(farr.name!)
+        if (farr.name! == "人生運"){
+          self.luckyView.backgroundColor = farr.color
+          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.view3.addSubview(luckyLabel)
+          print(farr.name)
+          print(farr.color)
+          self.view.addSubview(luckyView)
+        }
+      }
+
     }
     
     // 方角を表示するラベルを作成する

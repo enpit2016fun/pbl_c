@@ -18,6 +18,7 @@
 		4E13051F1DB9E8FD00D198D0 /* ImageAnalysisController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13051E1DB9E8FD00D198D0 /* ImageAnalysisController.swift */; };
 		4EA4C8681DD445E400921EEE /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4C8661DD43F8600921EEE /* CircleView.swift */; };
 		4EA4C86A1DD5548100921EEE /* FindFurnitureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4C8691DD5548100921EEE /* FindFurnitureController.swift */; };
+		4ED064F21DDDE69E00D9FCB5 /* Fortune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED064F11DDDE69E00D9FCB5 /* Fortune.swift */; };
 		58D411FED05B6E3196C9CFFD /* Pods_Fengshui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9CAA3A7E470DB95AAF0635 /* Pods_Fengshui.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		4E13051E1DB9E8FD00D198D0 /* ImageAnalysisController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAnalysisController.swift; sourceTree = "<group>"; };
 		4EA4C8661DD43F8600921EEE /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		4EA4C8691DD5548100921EEE /* FindFurnitureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindFurnitureController.swift; sourceTree = "<group>"; };
+		4ED064F11DDDE69E00D9FCB5 /* Fortune.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fortune.swift; sourceTree = "<group>"; };
 		6698CB2BCAFD7C1770477F7F /* Pods-Fengshui.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fengshui.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fengshui/Pods-Fengshui.release.xcconfig"; sourceTree = "<group>"; };
 		BBA21F6F0FFA1C2AF6C00ECF /* Pods-Fengshui.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fengshui.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fengshui/Pods-Fengshui.debug.xcconfig"; sourceTree = "<group>"; };
 		BE9CAA3A7E470DB95AAF0635 /* Pods_Fengshui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fengshui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +84,7 @@
 				4E13051E1DB9E8FD00D198D0 /* ImageAnalysisController.swift */,
 				4EA4C8691DD5548100921EEE /* FindFurnitureController.swift */,
 				4EA4C8661DD43F8600921EEE /* CircleView.swift */,
+				4ED064F11DDDE69E00D9FCB5 /* Fortune.swift */,
 				4E13050A1DB99F7200D198D0 /* Main.storyboard */,
 				4E13050D1DB99F7200D198D0 /* Assets.xcassets */,
 				4E13050F1DB99F7200D198D0 /* LaunchScreen.storyboard */,
@@ -233,6 +236,7 @@
 				4EA4C8681DD445E400921EEE /* CircleView.swift in Sources */,
 				4E0869691DCC493600E8FCFB /* SelectFortuneController.swift in Sources */,
 				4EA4C86A1DD5548100921EEE /* FindFurnitureController.swift in Sources */,
+				4ED064F21DDDE69E00D9FCB5 /* Fortune.swift in Sources */,
 				4E13051B1DB9A2F400D198D0 /* CaptureController.swift in Sources */,
 				4E1305091DB99F7200D198D0 /* ViewController.swift in Sources */,
 				4E1305071DB99F7200D198D0 /* AppDelegate.swift in Sources */,

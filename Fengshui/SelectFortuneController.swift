@@ -36,8 +36,38 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   var depositImage = UIImage(named:"貯金_180pt.png")
   var beautyImage = UIImage(named:"美容_180pt.png")
   var locationLabel: UILabel!
+  var fortuneArray:[Fortune] = []
+  
+  func colorWithHexString (hex:String) -> UIColor {
+    
+    let cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
+    
+    if ((cString as String).characters.count != 6) {
+      return UIColor.grayColor()
+    }
+    
+    let rString = (cString as NSString).substringWithRange(NSRange(location: 0, length: 2))
+    let gString = (cString as NSString).substringWithRange(NSRange(location: 2, length: 2))
+    let bString = (cString as NSString).substringWithRange(NSRange(location: 4, length: 2))
+    
+    var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
+    NSScanner(string: rString).scanHexInt(&r)
+    NSScanner(string: gString).scanHexInt(&g)
+    NSScanner(string: bString).scanHexInt(&b)
+    
+    return UIColor(
+      red: CGFloat(Float(r) / 255.0),
+      green: CGFloat(Float(g) / 255.0),
+      blue: CGFloat(Float(b) / 255.0),
+      alpha: CGFloat(Float(1.0))
+    )
+  }
+
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupFortune()
     
     imageView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 70, y: self.view.bounds.height * 0.08, width: 140, height: 140))
     // UIImageViewに画像を設定する.
@@ -99,7 +129,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     
     // 美容運を表示するラベルを作成する
     beautyLabel = UILabel(frame: CGRectMake(0,0,100,50))
-    beautyLabel.layer.position = CGPoint(x: self.view.bounds.width * (14/16) , y:self.view.bounds.height * 0.71)
+    beautyLabel.layer.position = CGPoint(x: self.view.bounds.width * (6/16) , y:self.view.bounds.height * 0.71)
     beautyLabel.textAlignment = NSTextAlignment.Center
     beautyLabel.text = "美容運"
     beautyLabel.textColor = UIColor.lightGrayColor()
@@ -107,17 +137,17 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     self.view.addSubview(beautyLabel)
     
     // 健康運を表示するラベルを作成する
-    beautyLabel = UILabel(frame: CGRectMake(0,0,100,50))
-    beautyLabel.layer.position = CGPoint(x: self.view.bounds.width * (6/16) , y:self.view.bounds.height * 0.71)
-    beautyLabel.textAlignment = NSTextAlignment.Center
-    beautyLabel.text = "健康運"
-    beautyLabel.textColor = UIColor.lightGrayColor()
-    beautyLabel.font = UIFont(name:"HiraKakuProN-W6",size:12)
-    self.view.addSubview(beautyLabel)
+    healthLabel = UILabel(frame: CGRectMake(0,0,100,50))
+    healthLabel.layer.position = CGPoint(x: self.view.bounds.width * (10/16) , y:self.view.bounds.height * 0.71)
+    healthLabel.textAlignment = NSTextAlignment.Center
+    healthLabel.text = "健康運"
+    healthLabel.textColor = UIColor.lightGrayColor()
+    healthLabel.font = UIFont(name:"HiraKakuProN-W6",size:12)
+    self.view.addSubview(healthLabel)
     
     // 金運を表示するラベルを作成する
     moneyLabel = UILabel(frame: CGRectMake(0,0,100,50))
-    moneyLabel.layer.position = CGPoint(x: self.view.bounds.width * (10/16) , y:self.view.bounds.height * 0.71)
+    moneyLabel.layer.position = CGPoint(x: self.view.bounds.width * (14/16) , y:self.view.bounds.height * 0.71)
     moneyLabel.textAlignment = NSTextAlignment.Center
     moneyLabel.text = "金運"
     moneyLabel.textColor = UIColor.lightGrayColor()
@@ -250,10 +280,11 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     // Dispose of any resources that can be recreated.
   }
   
+  
   func loveTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: ViewController = ViewController()
-    mySecondViewController.selectFortune = "love"
+    mySecondViewController.selectFortune = "恋愛運"
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "love" //appDelegateの変数を操作
     // アニメーションを設定する.
@@ -265,7 +296,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   func jobTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: ViewController = ViewController()
-    mySecondViewController.selectFortune = "job"
+    mySecondViewController.selectFortune = "仕事運"
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "job" //appDelegateの変数を操作    // アニメーションを設定する.
     mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
@@ -276,7 +307,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   func moneyTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: ViewController = ViewController()
-    mySecondViewController.selectFortune = "money"
+    mySecondViewController.selectFortune = "金運"
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "money" //appDelegateの変数を操作
     // アニメーションを設定する.
@@ -288,7 +319,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   func depositTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: ViewController = ViewController()
-    mySecondViewController.selectFortune = "deposit"
+    mySecondViewController.selectFortune = "貯金運"
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "deposit" //appDelegateの変数を操作
     // アニメーションを設定する.
@@ -300,7 +331,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   func healthTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: ViewController = ViewController()
-    mySecondViewController.selectFortune = "health"
+    mySecondViewController.selectFortune = "健康運"
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "health" //appDelegateの変数を操作
     // アニメーションを設定する.
@@ -313,7 +344,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   func beautyTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: ViewController = ViewController()
-    mySecondViewController.selectFortune = "beauty"
+    mySecondViewController.selectFortune = "美容運"
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "beauty" //appDelegateの変数を操作
     // アニメーションを設定する.
@@ -326,7 +357,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   func familyTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: ViewController = ViewController()
-    mySecondViewController.selectFortune = "family"
+    mySecondViewController.selectFortune = "家族運"
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "family" //appDelegateの変数を操作
     // アニメーションを設定する.
@@ -339,7 +370,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   func lifeTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: ViewController = ViewController()
-    mySecondViewController.selectFortune = "life"
+    mySecondViewController.selectFortune = "人生運"
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "life" //appDelegateの変数を操作
     // アニメーションを設定する.
@@ -348,6 +379,59 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
 
+  func setupFortune(){
+    let moneyFortune = Fortune()
+    moneyFortune.name = "金運"
+    moneyFortune.color = UIColor.yellowColor()
+    moneyFortune.direction = "西"
+    moneyFortune.colorName = "黄"
+    fortuneArray.append(moneyFortune)
+    let lifeFortune = Fortune()
+    lifeFortune.name = "人生運"
+    lifeFortune.color = UIColor(red: 255 / 255, green:215  / 255, blue: 0 / 255, alpha: 1.0)
+    lifeFortune.direction = "北西"
+    lifeFortune.colorName = "金"
+    fortuneArray.append(lifeFortune)
+    let depositFortune = Fortune()
+    depositFortune.name = "貯金運"
+    depositFortune.color = UIColor.magentaColor()
+    depositFortune.direction = "北"
+    depositFortune.colorName = "ピンク"
+    fortuneArray.append(depositFortune)
+    let healthFortune = Fortune()
+    healthFortune.name = "健康運"
+    healthFortune.color = UIColor.whiteColor()
+    healthFortune.direction = "北東"
+    healthFortune.colorName = "白"
+    fortuneArray.append(healthFortune)
+    let jobFortune = Fortune()
+    jobFortune.name = "仕事運"
+    jobFortune.color = UIColor.redColor()
+    jobFortune.direction = "東"
+    jobFortune.colorName = "赤"
+    fortuneArray.append(jobFortune)
+    let loveFortune = Fortune()
+    loveFortune.name = "恋愛運"
+    loveFortune.color = UIColor.magentaColor()
+    loveFortune.direction = "南東"
+    loveFortune.colorName = "ピンク"
+    fortuneArray.append(loveFortune)
+    let beautyFortune = Fortune()
+    beautyFortune.name = "美容運"
+    beautyFortune.color = UIColor.greenColor()
+    beautyFortune.direction = "南"
+    beautyFortune.colorName = "緑"
+    fortuneArray.append(beautyFortune)
+    let familyFortune = Fortune()
+    familyFortune.name = "家族運"
+    familyFortune.color = UIColor(red: 109 / 255, green:76  / 255, blue: 51 / 255, alpha: 1.0)
+    familyFortune.direction = "南西"
+    familyFortune.colorName = "茶色"
+    fortuneArray.append(familyFortune)
+    let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
+    appDelegate.farray = fortuneArray //appDelegateの変数を操作
+    
+  }
   
   
   /*

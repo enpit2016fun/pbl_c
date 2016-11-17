@@ -3,18 +3,21 @@ import CoreLocation
 
 class ViewController: UIViewController ,CLLocationManagerDelegate {
   var locationLabel: UILabel!
+  var teachLabel: UILabel!
   var lm: CLLocationManager! = nil
   var myImage = UIImage(named:"方角.png")
   var myRotateView:UIImageView! = nil
   var selectFortune:String?
-  
+  let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
+  var fortuneArray:[Fortune] = []
+  var selectedDirection:String?
+
   override func viewDidLoad() {
     super.viewDidLoad()
+    fortuneArray = appDelegate.farray
     self.view.backgroundColor = UIColor.whiteColor()
     myRotateView = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 100 , y: self.view.bounds.height/6, width: 200, height: 200))
     // UIImageViewに画像を設定する.
-    print(selectFortune!)
-    
     myRotateView.image = myImage
     // Viewに張りつけ.
     self.view.addSubview(myRotateView)
@@ -24,6 +27,20 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
     locationLabel.textAlignment = NSTextAlignment.Center
     locationLabel.font = UIFont(name:"HiraKakuProN-W6",size:25)
     self.view.addSubview(locationLabel)
+    // 方角指定を表示するラベルを作成する
+    teachLabel = UILabel(frame: CGRectMake(0,0,300,50))
+    teachLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.1)
+    teachLabel.textAlignment = NSTextAlignment.Center
+    teachLabel.font = UIFont(name:"HiraKakuProN-W6",size:25)
+    for farr in fortuneArray {
+      print(farr.name!)
+      if (farr.name! == selectFortune!){
+        selectedDirection = farr.direction!
+        teachLabel.text = "\(farr.direction!)に合わせてください"
+      }
+    }
+    
+    self.view.addSubview(teachLabel)
     // ボタンを生成する.
     let nextButton: UIButton = UIButton(frame: CGRectMake(0,0,self.view.bounds.width * 0.8,50))
     nextButton.backgroundColor = UIColor.orangeColor();
@@ -81,21 +98,61 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
     myRotateView.transform = CGAffineTransformMakeRotation(angle)
     //コンパスの値に応じて方角を表示
     if newHeading.magneticHeading >= 0 && newHeading.magneticHeading < 45 {
-      locationLabel.text = "北でよろしいですか"
+      if (selectedDirection == locationLabel.text){
+        locationLabel.textColor = UIColor.redColor()
+      }else{
+        locationLabel.textColor = UIColor.blackColor()
+      }
+      locationLabel.text = "北"
     } else if newHeading.magneticHeading >= 45 && newHeading.magneticHeading < 90  {
-      locationLabel.text = "北西でよろしいですか"
+      if (selectedDirection == locationLabel.text){
+        locationLabel.textColor = UIColor.redColor()
+      }else{
+        locationLabel.textColor = UIColor.blackColor()
+      }
+      locationLabel.text = "北西"
     } else if newHeading.magneticHeading >= 90 && newHeading.magneticHeading < 135  {
-      locationLabel.text = "西でよろしいですか"
+      if (selectedDirection == locationLabel.text){
+        locationLabel.textColor = UIColor.redColor()
+      }else{
+        locationLabel.textColor = UIColor.blackColor()
+      }
+      locationLabel.text = "西"
     } else if newHeading.magneticHeading >= 135 && newHeading.magneticHeading < 180 {
-      locationLabel.text = "南西でよろしいですか"
+      if (selectedDirection == locationLabel.text){
+        locationLabel.textColor = UIColor.redColor()
+      }else{
+        locationLabel.textColor = UIColor.blackColor()
+      }
+      locationLabel.text = "南西"
     } else if newHeading.magneticHeading >= 180 && newHeading.magneticHeading < 225  {
-      locationLabel.text = "南でよろしいですか"
+      if (selectedDirection == locationLabel.text){
+        locationLabel.textColor = UIColor.redColor()
+      }else{
+        locationLabel.textColor = UIColor.blackColor()
+      }
+      locationLabel.text = "南"
     } else if newHeading.magneticHeading >= 225 && newHeading.magneticHeading < 270  {
-      locationLabel.text = "南東でよろしいですか"
+      if (selectedDirection == locationLabel.text){
+        locationLabel.textColor = UIColor.redColor()
+      }else{
+        locationLabel.textColor = UIColor.blackColor()
+      }
+      locationLabel.text = "南東"
     } else if newHeading.magneticHeading >= 270 && newHeading.magneticHeading < 315  {
-      locationLabel.text = "東でよろしいですか"
+      if (selectedDirection == locationLabel.text){
+        locationLabel.textColor = UIColor.redColor()
+      }else{
+        locationLabel.textColor = UIColor.blackColor()
+      }
+      locationLabel.text = "東"
     } else {
-      locationLabel.text = "北東でよろしいですか"
+      if (selectedDirection == locationLabel.text){
+        locationLabel.textColor = UIColor.redColor()
+      }else{
+        locationLabel.textColor = UIColor.blackColor()
+      }
+      locationLabel.text = "北東"
     }
   
     //方角を角度で表示
