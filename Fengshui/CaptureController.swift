@@ -189,7 +189,8 @@ class CaptureController: UIViewController, UIGestureRecognizerDelegate {
       // アニメーションを設定する.
       mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
       // 撮影した画像を解析画面に受け渡し
-      mySecondViewController.takenImage_accessor  = image
+      //mySecondViewController.takenImage_accessor  = image
+      mySecondViewController.takenImage = image
       // Viewの移動する.
       self.presentViewController(mySecondViewController, animated: true, completion: nil)
       

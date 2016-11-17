@@ -32,9 +32,15 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   var view4:UIView!
   var colorView: UIView!
   var luckyView: UIView!
-  var loveImage = UIImage(named:"恋愛運.png")
-  var jobImage = UIImage(named:"仕事運.png")
+  var loveImage = UIImage(named:"恋愛_180pt.png")
+  var jobImage = UIImage(named:"仕事_180pt.png")
   var lifeImage = UIImage(named:"人生運.png")
+  var myImage = UIImage(named:"女の子アイコン")
+  var familyImage = UIImage(named:"家族_180pt.png")
+  var moneyImage = UIImage(named:"金運_180pt.png")
+  var healthImage = UIImage(named:"健康_180pt.png")
+  var depositImage = UIImage(named:"貯金_180pt.png")
+  var beautyImage = UIImage(named:"美容_180pt.png")
   var selectedFortune:String?
   var fortuneLabel: UILabel!
   var furnitureLabel: UILabel!
@@ -42,14 +48,14 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   var parsentLabel: UILabel!
   var isSuccess:Bool = false
   
-  var takenImage_accessor: UIImage? {
-    get {
-      return self.takenImage
-    }
-    set(value) {
-      self.takenImage = value
-    }
-  }
+  //  var takenImage_accessor: UIImage? {
+  //    get {
+  //      return self.takenImage
+  //    }
+  //    set(value) {
+  //      self.takenImage = value
+  //    }
+  //  }
   func dispatch_async_main(block: () -> ()) {
     dispatch_async(dispatch_get_main_queue(), block)
   }
@@ -138,7 +144,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     PictureView.addGestureRecognizer(pictureTap)
     // Viewに張りつけ.
     self.view.addSubview(PictureView)
-
+    
     
     
     //選んだ運勢に合わせて画像を表示
@@ -156,6 +162,41 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       jobView.image = jobImage
       self.view1.addSubview(jobView)
       fortuneLabel.text = "仕事運"
+    }else if selectedFortune! == "money" {
+      let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      jobView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
+      // UIImageViewに画像を設定する.
+      jobView.image = moneyImage
+      self.view1.addSubview(jobView)
+      fortuneLabel.text = "金運"
+    }else if selectedFortune! == "deposit" {
+      let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      jobView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
+      // UIImageViewに画像を設定する.
+      jobView.image = depositImage
+      self.view1.addSubview(jobView)
+      fortuneLabel.text = "貯金運"
+    }else if selectedFortune! == "health" {
+      let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      jobView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
+      // UIImageViewに画像を設定する.
+      jobView.image = healthImage
+      self.view1.addSubview(jobView)
+      fortuneLabel.text = "健康運"
+    }else if selectedFortune! == "family" {
+      let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      jobView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
+      // UIImageViewに画像を設定する.
+      jobView.image = familyImage
+      self.view1.addSubview(jobView)
+      fortuneLabel.text = "家族運"
+    }else if selectedFortune! == "beauty" {
+      let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      jobView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
+      // UIImageViewに画像を設定する.
+      jobView.image = beautyImage
+      self.view1.addSubview(jobView)
+      fortuneLabel.text = "美容運"
     }else {
       let lifeView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       lifeView.center = CGPoint(x:self.view1.bounds.width/2,y:self.view1.bounds.height/2 - 10)
@@ -174,7 +215,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     ResultLabel.text = "結果"
     ResultLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
     self.view.addSubview(ResultLabel)
-    SVProgressHUD.showWithStatus("画像解析中")
+    
     //撮影した画像をViewに描画
     
     // 風水の評価を出力
@@ -182,21 +223,29 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     //============= ディスパッチグループおよびディスパッチキューの作成 ============= //
     let dispatchGroup = dispatch_group_create()
     let queue1 = dispatch_queue_create("キュー1", DISPATCH_QUEUE_SERIAL)
-    let queue2 = dispatch_queue_create("キュー2", DISPATCH_QUEUE_CONCURRENT)
+    //let queue2 = dispatch_queue_create("キュー2", DISPATCH_QUEUE_CONCURRENT)
     
     //============= 単純なタスクの追加 ============= //
     dispatch_group_async(dispatchGroup, queue1, {
       self.initImageView()
     })
     dispatch_group_async(dispatchGroup, queue1, {
-      self.myImageUploadRequest()
-    })
-    dispatch_group_async(dispatchGroup, queue2, {
-      self.getColor()
+      self.dispatch_async_global { // ここからバックグラウンドスレッド
+        SVProgressHUD.showWithStatus("画像解析中")
+        self.myImageUploadRequest({message in
+          print(message)
+          self.getColor()})
+        self.dispatch_async_main { // ここからメインスレッド
+          print("dismiss")
+          //SVProgressHUD.dismiss()
+        }
+      }
+      
     })
     
     //============= 前の全タスクが全て処理し終わったあとに処理されるタスクの追加 ============= //
     dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER)
+    
     print("end")
   }
   
@@ -208,7 +257,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
-
+  
   
   
   
@@ -220,9 +269,10 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     let circleView = CircleView(frame: CGRectMake(diceRoll, 0, circleWidth, circleHeight))
     circleView.center = CGPoint(x:self.view.bounds.width * 0.75,y:self.view.bounds.height * 0.55 + 8 )
     self.view.addSubview(circleView)
-    
+    SVProgressHUD.dismiss()
     // Animate the drawing of the circle over the course of 1 second
-    circleView.animateCircle(5)
+    circleView.animateCircle(1)
+    
     
   }
   
@@ -240,7 +290,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
           return
         }
         self.dispatch_async_global { // ここからバックグラウンドスレッド
-          SVProgressHUD.showWithStatus("画像解析中")
+          //SVProgressHUD.showWithStatus("画像解析中")
           let json = JSON(object)
           print(json)
           self.dispatch_async_main { // ここからメインスレッド
@@ -251,7 +301,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
             self.colorView.backgroundColor = UIColor(red: json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["red"].number! as CGFloat / 255, green: json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["green"].number! as CGFloat / 255, blue: json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["blue"].number! as CGFloat / 255, alpha: 1.0)
             let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.circleColor = UIColor(red: json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["red"].number! as CGFloat / 255, green: json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["green"].number! as CGFloat / 255, blue: json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["blue"].number! as CGFloat / 255, alpha: 1.0)
-            let score:Double = json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["score"].number! as Double 
+            let score:Double = json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["score"].number! as Double
             print(score)
             //self.view.addSubview(self.colorView)
             appDelegate.score = score
@@ -266,8 +316,8 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
             let text = String(format: "%.0f",score * 100)
             self.parsentLabel.text = text + "%"
             self.view2.addSubview(self.parsentLabel)
-            SVProgressHUD.dismiss()
-            }
+            
+          }
         }
     }
   }
@@ -307,7 +357,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   
   
   //画像のアップロード処理
-  func myImageUploadRequest(){
+  func myImageUploadRequest(callback:(String) -> Void){
     //myUrlには自分で用意したphpファイルのアドレスを入れる
     let myUrl = NSURL(string:"http://wing-bsk.sakura.ne.jp/")
     let request = NSMutableURLRequest(URL:myUrl!)
@@ -316,6 +366,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     let param = [
       "userId" : "12345"
     ]
+    let message:String = "isSuccess"
     let boundary = generateBoundaryString()
     request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
     let imageData = UIImageJPEGRepresentation(self.takenImage!, 1)
@@ -334,7 +385,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       self.isSuccess = true
       dispatch_async(dispatch_get_main_queue(),{
         //アップロード完了
-        
+        callback(message)
       });
     }
     task.resume()
