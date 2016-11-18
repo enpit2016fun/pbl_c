@@ -11,6 +11,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
   let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
   var fortuneArray:[Fortune] = []
   var selectedDirection:String?
+  var nextButton:UIButton?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,15 +43,15 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
     
     self.view.addSubview(teachLabel)
     // ボタンを生成する.
-    let nextButton: UIButton = UIButton(frame: CGRectMake(0,0,self.view.bounds.width * 0.8,50))
-    nextButton.backgroundColor = UIColor.orangeColor();
-    nextButton.layer.masksToBounds = true
-    nextButton.setTitle("OK", forState: .Normal)
-    nextButton.layer.cornerRadius = 10.0
-    nextButton.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
-    nextButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+    nextButton = UIButton(frame: CGRectMake(0,0,self.view.bounds.width * 0.8,50))
+    nextButton!.backgroundColor = UIColor.orangeColor();
+    nextButton!.layer.masksToBounds = true
+    nextButton!.setTitle("OK", forState: .Normal)
+    nextButton!.layer.cornerRadius = 10.0
+    nextButton!.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
+    nextButton!.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchUpInside)
     // ボタンを追加する.
-    self.view.addSubview(nextButton)
+    self.view.addSubview(nextButton!)
     
     lm = CLLocationManager()
     // 位置情報を取るよう設定
@@ -100,57 +101,89 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
     if newHeading.magneticHeading >= 0 && newHeading.magneticHeading < 45 {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
+        self.nextButton!.enabled = true
+        self.nextButton!.alpha = 1.0
       }else{
         locationLabel.textColor = UIColor.blackColor()
+        self.nextButton!.enabled = false
+        self.nextButton!.alpha = 0.3
       }
       locationLabel.text = "北"
     } else if newHeading.magneticHeading >= 45 && newHeading.magneticHeading < 90  {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
+        self.nextButton!.enabled = true
+        self.nextButton!.alpha = 1.0
       }else{
         locationLabel.textColor = UIColor.blackColor()
+        self.nextButton!.enabled = false
+        self.nextButton!.alpha = 0.3
       }
       locationLabel.text = "北西"
     } else if newHeading.magneticHeading >= 90 && newHeading.magneticHeading < 135  {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
+        self.nextButton!.enabled = true
+        self.nextButton!.alpha = 1.0
       }else{
         locationLabel.textColor = UIColor.blackColor()
+        self.nextButton!.enabled = false
+        self.nextButton!.alpha = 0.3
       }
       locationLabel.text = "西"
     } else if newHeading.magneticHeading >= 135 && newHeading.magneticHeading < 180 {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
+        self.nextButton!.enabled = true
+        self.nextButton!.alpha = 1.0
       }else{
         locationLabel.textColor = UIColor.blackColor()
+        self.nextButton!.enabled = false
+        self.nextButton!.alpha = 0.3
       }
       locationLabel.text = "南西"
     } else if newHeading.magneticHeading >= 180 && newHeading.magneticHeading < 225  {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
+        self.nextButton!.enabled = true
+        self.nextButton!.alpha = 1.0
       }else{
         locationLabel.textColor = UIColor.blackColor()
+        self.nextButton!.enabled = false
+        self.nextButton!.alpha = 0.3
       }
       locationLabel.text = "南"
     } else if newHeading.magneticHeading >= 225 && newHeading.magneticHeading < 270  {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
+        self.nextButton!.enabled = true
+        self.nextButton!.alpha = 1.0
       }else{
         locationLabel.textColor = UIColor.blackColor()
+        self.nextButton!.enabled = false
+        self.nextButton!.alpha = 0.3
       }
       locationLabel.text = "南東"
     } else if newHeading.magneticHeading >= 270 && newHeading.magneticHeading < 315  {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
+        self.nextButton!.enabled = true
+        self.nextButton!.alpha = 1.0
       }else{
         locationLabel.textColor = UIColor.blackColor()
+        self.nextButton!.enabled = false
+        self.nextButton!.alpha = 0.3
       }
       locationLabel.text = "東"
     } else {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
+        self.nextButton!.enabled = true
+        self.nextButton!.alpha = 1.0
       }else{
         locationLabel.textColor = UIColor.blackColor()
+        self.nextButton!.enabled = false
+        self.nextButton!.alpha = 0.3
       }
       locationLabel.text = "北東"
     }
