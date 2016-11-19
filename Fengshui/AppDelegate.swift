@@ -20,9 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var score:Double? = nil
   var farray:[Fortune] = []
   let first: SelectFortuneController = SelectFortuneController()
+  //let first: ViewController = ViewController()
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        sleep(1)
         return true
   }
 

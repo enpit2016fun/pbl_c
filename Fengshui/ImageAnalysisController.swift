@@ -30,6 +30,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   var view2:UIView!
   var view3:UIView!
   var view4:UIView!
+  var colorName:String!
   var colorView: UIView!
   var luckyView: UIView!
   var loveImage = UIImage(named:"恋愛_180pt.png")
@@ -163,6 +164,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "恋愛運"){
           self.luckyView.backgroundColor = farr.color
+          colorName = farr.colorName!
           luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view3.addSubview(luckyLabel)
           print(farr.name)
@@ -182,6 +184,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "仕事運"){
           self.luckyView.backgroundColor = farr.color
+          colorName = farr.colorName!
           luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view3.addSubview(luckyLabel)
           print(farr.name)
@@ -201,6 +204,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "金運"){
           self.luckyView.backgroundColor = farr.color
+          colorName = farr.colorName!
           luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view3.addSubview(luckyLabel)
           print(farr.name)
@@ -221,6 +225,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "貯金運"){
           self.luckyView.backgroundColor = farr.color
+          colorName = farr.colorName!
           luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view3.addSubview(luckyLabel)
           print(farr.name)
@@ -240,6 +245,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "健康運"){
           self.luckyView.backgroundColor = farr.color
+          colorName = farr.colorName!
           luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view3.addSubview(luckyLabel)
           print(farr.name)
@@ -259,6 +265,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "家族運"){
           self.luckyView.backgroundColor = farr.color
+          colorName = farr.colorName!
           luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view3.addSubview(luckyLabel)
           print(farr.name)
@@ -278,6 +285,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "美容運"){
           self.luckyView.backgroundColor = farr.color
+          colorName = farr.colorName!
           luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view3.addSubview(luckyLabel)
           print(farr.name)
@@ -297,6 +305,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "人生運"){
           self.luckyView.backgroundColor = farr.color
+          colorName = farr.colorName!
           luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view3.addSubview(luckyLabel)
           print(farr.name)
@@ -354,6 +363,8 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     // 遷移するViewを定義する.
     let mySecondViewController: FindFurnitureController = FindFurnitureController()
     // アニメーションを設定する.
+    mySecondViewController.color = colorName
+    print(colorName)
     mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)

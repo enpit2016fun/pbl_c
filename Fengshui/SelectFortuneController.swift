@@ -37,7 +37,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   var beautyImage = UIImage(named:"美容_180pt.png")
   var locationLabel: UILabel!
   var fortuneArray:[Fortune] = []
-  
+  //var logoImageView:UIImageView!
   func colorWithHexString (hex:String) -> UIColor {
     
     let cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
@@ -64,11 +64,9 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   }
 
   
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     setupFortune()
-    
     imageView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 70, y: self.view.bounds.height * 0.08, width: 140, height: 140))
     // UIImageViewに画像を設定する.
     imageView.image = myImage

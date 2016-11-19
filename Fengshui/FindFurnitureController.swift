@@ -11,7 +11,7 @@ import SVProgressHUD
 
 class FindFurnitureController: UIViewController,UIWebViewDelegate {
   //var webView: UIWebView!
-  var color = "緑"
+  var color:String?
   var word = "家具"
   
   func dispatch_async_main(block: () -> ()) {
@@ -42,10 +42,10 @@ class FindFurnitureController: UIViewController,UIWebViewDelegate {
     
     
     
-    urlEncode("\(color) \(word)")
+    urlEncode("\(color)")
     
     self.view.addSubview(webView)
-    let url: NSURL = NSURL(string: "https://www.amazon.co.jp/s/ref=nb_sb_noss_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&url=search-alias%3Daps&field-keywords=%E5%AE%B6%E5%85%B7&rh=i%3Aaps%2Ck%3A%E5%AE%B6%E5%85%B7")!
+    let url: NSURL = NSURL(string: "https://www.amazon.co.jp/s/ref=nb_sb_noss_2?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&url=node%3D16428011&field-keywords=\(urlEncode("\(color!)"))")!
     self.dispatch_async_global { // ここからバックグラウンドスレッド
       SVProgressHUD.showWithStatus("ロード中")
       let request: NSURLRequest = NSURLRequest(URL: url)
