@@ -26,7 +26,7 @@ class CircleView: UIView {
     circleLayer.fillColor = UIColor.clearColor().CGColor
     //circleLayer.strokeColor = UIColor.redColor().CGColor
     circleLayer.strokeColor = appDelegate.circleColor!.CGColor //appDelegateの変数を操作
-    circleLayer.lineWidth = 20.0;
+    circleLayer.lineWidth = 10.0;
     
     // Don't draw the circle initially
     circleLayer.strokeEnd = 0.0

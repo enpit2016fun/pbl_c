@@ -9,11 +9,12 @@
 import UIKit
 import SVProgressHUD
 
-class FindFurnitureController: UIViewController,UIWebViewDelegate {
+class FindFurnitureController: UIViewController,UIWebViewDelegate,UIGestureRecognizerDelegate {
   //var webView: UIWebView!
   var color:String?
   var word = "家具"
-  
+  var backImage = UIImage(named:"site遷移.png")
+  var backImageView: UIImageView!
   func dispatch_async_main(block: () -> ()) {
     dispatch_async(dispatch_get_main_queue(), block)
   }
@@ -33,12 +34,7 @@ class FindFurnitureController: UIViewController,UIWebViewDelegate {
     let webView : UIWebView = UIWebView()
     webView.delegate = self
     webView.frame = self.view.bounds
-    
-    let swipeDownGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(FindFurnitureController.handleSwipeleft(_:)))
 
-    swipeDownGesture.numberOfTouchesRequired = 1
-    swipeDownGesture.direction = UISwipeGestureRecognizerDirection.Right
-    self.view.addGestureRecognizer(swipeDownGesture)
     
     
     
@@ -54,17 +50,28 @@ class FindFurnitureController: UIViewController,UIWebViewDelegate {
         SVProgressHUD.dismiss()
       }
     }
-
+    backImageView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.1  , y: self.view.bounds.height * 0.9, width: 50, height: 50))
+    // UIImageViewに画像を設定する.
+    backImageView.image = backImage
+    
+    backImageView.userInteractionEnabled = true
+    
+    let backTap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FindFurnitureController.backTapAction(_:)))
+    backTap.delegate = self
+    
+    backImageView.addGestureRecognizer(backTap)
+    // Viewに張りつけ.
+    self.view.addSubview(backImageView)
     // Do any additional setup after loading the view.
   }
   func handleSwipeleft(sender: UITapGestureRecognizer){
     print("Swiped up!")
-//    // 遷移するViewを定義する.
-//    let mySecondViewController: ImageAnalysisController = ImageAnalysisController()
-//    // アニメーションを設定する.
-//    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
-//    // Viewの移動する.
-//    self.presentViewController(mySecondViewController, animated: true, completion: nil)
+    //    // 遷移するViewを定義する.
+    //    let mySecondViewController: ImageAnalysisController = ImageAnalysisController()
+    //    // アニメーションを設定する.
+    //    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //    // Viewの移動する.
+    //    self.presentViewController(mySecondViewController, animated: true, completion: nil)
     self.dismissViewControllerAnimated(true, completion: nil)
   }
   
@@ -80,6 +87,15 @@ class FindFurnitureController: UIViewController,UIWebViewDelegate {
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  func backTapAction(sender: UITapGestureRecognizer){
+    // 遷移するViewを定義する.
+    self.dismissViewControllerAnimated(true, completion: nil)
+//    let mySecondViewController: ImageAnalysisController = ImageAnalysisController()
+//    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+//    // Viewの移動する.
+//    self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
   
   

@@ -19,6 +19,10 @@
 		4EA4C86A1DD5548100921EEE /* FindFurnitureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4C8691DD5548100921EEE /* FindFurnitureController.swift */; };
 		4ED064F21DDDE69E00D9FCB5 /* Fortune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED064F11DDDE69E00D9FCB5 /* Fortune.swift */; };
 		4ED064F41DE0916200D9FCB5 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED064F31DE0916200D9FCB5 /* Launch Screen.storyboard */; };
+		4ED064F61DE773BE00D9FCB5 /* ChoiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED064F51DE773BE00D9FCB5 /* ChoiceController.swift */; };
+		4ED064F81DEB0CAA00D9FCB5 /* SelectFurnitureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED064F71DEB0CAA00D9FCB5 /* SelectFurnitureController.swift */; };
+		4ED064FC1DEB151E00D9FCB5 /* CaptureFurnitureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED064FB1DEB151E00D9FCB5 /* CaptureFurnitureController.swift */; };
+		4ED064FE1DEB1B1E00D9FCB5 /* DirectionAnalysisController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED064FD1DEB1B1E00D9FCB5 /* DirectionAnalysisController.swift */; };
 		58D411FED05B6E3196C9CFFD /* Pods_Fengshui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE9CAA3A7E470DB95AAF0635 /* Pods_Fengshui.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +41,10 @@
 		4EA4C8691DD5548100921EEE /* FindFurnitureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindFurnitureController.swift; sourceTree = "<group>"; };
 		4ED064F11DDDE69E00D9FCB5 /* Fortune.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fortune.swift; sourceTree = "<group>"; };
 		4ED064F31DE0916200D9FCB5 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		4ED064F51DE773BE00D9FCB5 /* ChoiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceController.swift; sourceTree = "<group>"; };
+		4ED064F71DEB0CAA00D9FCB5 /* SelectFurnitureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFurnitureController.swift; sourceTree = "<group>"; };
+		4ED064FB1DEB151E00D9FCB5 /* CaptureFurnitureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureFurnitureController.swift; sourceTree = "<group>"; };
+		4ED064FD1DEB1B1E00D9FCB5 /* DirectionAnalysisController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionAnalysisController.swift; sourceTree = "<group>"; };
 		6698CB2BCAFD7C1770477F7F /* Pods-Fengshui.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fengshui.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fengshui/Pods-Fengshui.release.xcconfig"; sourceTree = "<group>"; };
 		BBA21F6F0FFA1C2AF6C00ECF /* Pods-Fengshui.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fengshui.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fengshui/Pods-Fengshui.debug.xcconfig"; sourceTree = "<group>"; };
 		BE9CAA3A7E470DB95AAF0635 /* Pods_Fengshui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fengshui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,10 +86,14 @@
 			isa = PBXGroup;
 			children = (
 				4E1305061DB99F7200D198D0 /* AppDelegate.swift */,
+				4ED064F51DE773BE00D9FCB5 /* ChoiceController.swift */,
+				4ED064F71DEB0CAA00D9FCB5 /* SelectFurnitureController.swift */,
 				4E0869681DCC493600E8FCFB /* SelectFortuneController.swift */,
 				4E1305081DB99F7200D198D0 /* ViewController.swift */,
 				4E13051A1DB9A2F400D198D0 /* CaptureController.swift */,
+				4ED064FB1DEB151E00D9FCB5 /* CaptureFurnitureController.swift */,
 				4E13051E1DB9E8FD00D198D0 /* ImageAnalysisController.swift */,
+				4ED064FD1DEB1B1E00D9FCB5 /* DirectionAnalysisController.swift */,
 				4EA4C8691DD5548100921EEE /* FindFurnitureController.swift */,
 				4EA4C8661DD43F8600921EEE /* CircleView.swift */,
 				4ED064F11DDDE69E00D9FCB5 /* Fortune.swift */,
@@ -236,10 +248,14 @@
 				4EA4C8681DD445E400921EEE /* CircleView.swift in Sources */,
 				4E0869691DCC493600E8FCFB /* SelectFortuneController.swift in Sources */,
 				4EA4C86A1DD5548100921EEE /* FindFurnitureController.swift in Sources */,
+				4ED064FE1DEB1B1E00D9FCB5 /* DirectionAnalysisController.swift in Sources */,
+				4ED064FC1DEB151E00D9FCB5 /* CaptureFurnitureController.swift in Sources */,
 				4ED064F21DDDE69E00D9FCB5 /* Fortune.swift in Sources */,
 				4E13051B1DB9A2F400D198D0 /* CaptureController.swift in Sources */,
 				4E1305091DB99F7200D198D0 /* ViewController.swift in Sources */,
+				4ED064F61DE773BE00D9FCB5 /* ChoiceController.swift in Sources */,
 				4E1305071DB99F7200D198D0 /* AppDelegate.swift in Sources */,
+				4ED064F81DEB0CAA00D9FCB5 /* SelectFurnitureController.swift in Sources */,
 				4E13051F1DB9E8FD00D198D0 /* ImageAnalysisController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

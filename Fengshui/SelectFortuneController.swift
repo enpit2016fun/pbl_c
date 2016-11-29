@@ -66,6 +66,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.backgroundColor = UIColor.whiteColor()
     setupFortune()
     imageView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 70, y: self.view.bounds.height * 0.08, width: 140, height: 140))
     // UIImageViewに画像を設定する.

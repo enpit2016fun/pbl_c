@@ -19,8 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var circleColor:UIColor? = nil
   var score:Double? = nil
   var farray:[Fortune] = []
-  let first: SelectFortuneController = SelectFortuneController()
-  //let first: ViewController = ViewController()
+  //let first: SelectFortuneController = SelectFortuneController()
+  
+  let first: ChoiceController = ChoiceController()
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
