@@ -33,6 +33,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   var PhotoImage = UIImage(named:"takePhoto_g.png")
   var PhotoImageView: UIImageView!
   var hanteiView: UIImageView!
+  var hanteiImage = UIImage(named:"たいへんよくできました.png")
   var view1:UIView!
   var view2:UIView!
   var view3:UIView!
@@ -52,6 +53,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   var selectedFortune:String?
   var fortuneLabel: UILabel!
   var furnitureLabel: UILabel!
+  var kaisetsuLabel:UITextView!
   var luckyLabel: UILabel!
   var parsentLabel: UILabel!
   var isSuccess:Bool = false
@@ -104,19 +106,19 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     //view3.layer.borderWidth = 0.5
     view4.layer.borderColor = UIColor.grayColor().CGColor
     //view4.layer.borderWidth = 0.5
-    self.view.addSubview(view1)
-    self.view.addSubview(view2)
-    self.view.addSubview(view3)
-    self.view.addSubview(view4)
+    //self.view.addSubview(view1)
+    //self.view.addSubview(view2)
+    //self.view.addSubview(view3)
+    //self.view.addSubview(view4)
     
     
     // ラッキーカラーを表示するラベルを作成する
     luckyLabel = UILabel(frame: CGRectMake(0,0,130,80))
-    luckyLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.75 , y:self.view.bounds.height * 0.8)
+    luckyLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.5)
     luckyLabel.textAlignment = NSTextAlignment.Center
     luckyLabel.font = UIFont(name:"HiraKakuProN-W6",size:13)
     luckyLabel.textColor = UIColor.lightGrayColor()
-    //luckyLabel.text = "ラッキーカラー：黄"
+    luckyLabel.text = "ラッキーカラー：黄"
     self.view.addSubview(luckyLabel)
     
     self.luckyView = UIView(frame: CGRectMake(0,0,self.view.bounds.width/5.5,self.view.bounds.width/5.5))
@@ -302,9 +304,11 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
 
     }
     
-    hanteiView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.68 , y: self.view.bounds.height * 0.87, width: self.view.bounds.width * 0.3, height: 50))
+    hanteiView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.5, y: self.view.bounds.height * 0.45, width: 120, height: 120))
     // UIImageViewに画像を設定する.
-    hanteiView.image = HomeImage
+    hanteiView.image = hanteiImage
+    hanteiView.alpha = 0.8
+    self.view.addSubview(hanteiView)
 
     
     HomeImageView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.68 , y: self.view.bounds.height * 0.87, width: self.view.bounds.width * 0.3, height: 50))
@@ -341,11 +345,23 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     ResultLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
     self.view.addSubview(ResultLabel)
     
+    // 方角を表示するラベルを作成する
+    kaisetsuLabel = UITextView(frame: CGRectMake(0,0,200,150))
+    kaisetsuLabel.backgroundColor = UIColor.clearColor()
+    kaisetsuLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.58)
+    kaisetsuLabel.textAlignment = NSTextAlignment.Left
+    kaisetsuLabel.textColor = UIColor.blackColor()
+    kaisetsuLabel.text = "水の気が強い方位なので空間が汚れると気がよどむ傾向も強いのでマメに掃除をし清潔な状態をキープします。冷えやすい方位なのでレイアウトするインテリアは暖かみを感じられるものがベストです。"
+    kaisetsuLabel.font = UIFont(name:"HiraKakuProN-W6",size:7)
+    self.view.addSubview(kaisetsuLabel)
+
+    
+
+    
     
     //撮影した画像をViewに描画
     
     // 風水の評価を出力
-    
     //============= ディスパッチグループおよびディスパッチキューの作成 ============= //
     let dispatchGroup = dispatch_group_create()
     let queue1 = dispatch_queue_create("キュー1", DISPATCH_QUEUE_SERIAL)

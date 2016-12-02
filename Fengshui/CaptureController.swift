@@ -2,7 +2,7 @@ import UIKit
 import AVFoundation
 
 class CaptureController: UIViewController, UIGestureRecognizerDelegate {
-  
+  //var loveImage = UIImage(named:"恋愛_180pt.png")
   // AVキャプチャセッション
   var avSession: AVCaptureSession!
   
@@ -107,11 +107,24 @@ class CaptureController: UIViewController, UIGestureRecognizerDelegate {
         
         // AVLayerVideoGravityResize
         //      利用可能な画面領域いっぱいにリサイズ
-        
+        //元画像からCALayerを切り出す
+        //画像指定。UIImageでなく、UIImageの持っているCGImageRefを渡す。UIImage名.CGImageで取り出せる。(id)はエラー防止のためつける
+        //let anim  = CALayer()
+        //anim.contents = loveImage!.CGImage
+        //レイヤーの大きさを指定　第一、第二引数は0でOK。第三引数、第四引数で横幅と高さの設定をする。
+        //anim.bounds = CGRectMake(0,0,64,64);
+        //元画像から切り取ってレイヤーにするため、切りとる部分を指定。
+        //第一、第二匹数は切り取りを開始するところの比、第三、第四引数は切り取る横幅と高さの比。どれも0.0~1.0の比率で指定することに注意
+        //anim.contentsRect = CGRectMake(0, 0, 1.0, 1.0);
+        //レイヤーを表示する位置を指定する。指定した座標に、レイヤーの左上でなく、中央がくるよう表示されることに注意。
+        //anim.position = CGPointMake(100,100);
         
         // Viewに追加.
         self.view.layer.addSublayer(capVideoLayer)
-        
+//        let imageView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 50 , y: self.view.bounds.height * 0.35, width: 100, height: 100))
+//        imageView.image = loveImage
+//        self.view.layer.addSublayer(anim)
+//        self.view.addSubview(imageView)
         // セッション開始.
         avSession.startRunning()
         
