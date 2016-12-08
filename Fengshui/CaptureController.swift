@@ -154,6 +154,8 @@ class CaptureController: UIViewController, UIGestureRecognizerDelegate {
     self.navigationController?.popViewControllerAnimated(true)
   }
   
+  
+  
   // 画面になにか重ねて表示する
   func renderView() {
     
@@ -200,7 +202,7 @@ class CaptureController: UIViewController, UIGestureRecognizerDelegate {
       // 遷移するViewを定義する.
       let mySecondViewController: ImageAnalysisController = ImageAnalysisController()
       // アニメーションを設定する.
-      mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+      //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
       // 撮影した画像を解析画面に受け渡し
       //mySecondViewController.takenImage_accessor  = image
       mySecondViewController.takenImage = image
@@ -231,5 +233,7 @@ class CaptureController: UIViewController, UIGestureRecognizerDelegate {
     self.avDevice = nil
     self.avSession = nil
   }
+  
+  
   
 }

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4E0869691DCC493600E8FCFB /* SelectFortuneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0869681DCC493600E8FCFB /* SelectFortuneController.swift */; };
+		4E0E24961DF9409D00AA5F0B /* ColorChoiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0E24951DF9409D00AA5F0B /* ColorChoiceController.swift */; };
+		4E0E24981DF967ED00AA5F0B /* ResultColorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0E24971DF967ED00AA5F0B /* ResultColorController.swift */; };
+		4E0E249A1DF9A92C00AA5F0B /* HSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0E24991DF9A92C00AA5F0B /* HSV.swift */; };
 		4E1305071DB99F7200D198D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1305061DB99F7200D198D0 /* AppDelegate.swift */; };
 		4E1305091DB99F7200D198D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1305081DB99F7200D198D0 /* ViewController.swift */; };
 		4E13050C1DB99F7200D198D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E13050A1DB99F7200D198D0 /* Main.storyboard */; };
@@ -28,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		4E0869681DCC493600E8FCFB /* SelectFortuneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFortuneController.swift; sourceTree = "<group>"; };
+		4E0E24951DF9409D00AA5F0B /* ColorChoiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChoiceController.swift; sourceTree = "<group>"; };
+		4E0E24971DF967ED00AA5F0B /* ResultColorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultColorController.swift; sourceTree = "<group>"; };
+		4E0E24991DF9A92C00AA5F0B /* HSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSV.swift; sourceTree = "<group>"; };
 		4E1305031DB99F7200D198D0 /* Fengshui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fengshui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1305061DB99F7200D198D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E1305081DB99F7200D198D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +103,9 @@
 				4EA4C8691DD5548100921EEE /* FindFurnitureController.swift */,
 				4EA4C8661DD43F8600921EEE /* CircleView.swift */,
 				4ED064F11DDDE69E00D9FCB5 /* Fortune.swift */,
+				4E0E24951DF9409D00AA5F0B /* ColorChoiceController.swift */,
+				4E0E24971DF967ED00AA5F0B /* ResultColorController.swift */,
+				4E0E24991DF9A92C00AA5F0B /* HSV.swift */,
 				4E13050A1DB99F7200D198D0 /* Main.storyboard */,
 				4ED064F31DE0916200D9FCB5 /* Launch Screen.storyboard */,
 				4E13050D1DB99F7200D198D0 /* Assets.xcassets */,
@@ -248,14 +257,17 @@
 				4EA4C8681DD445E400921EEE /* CircleView.swift in Sources */,
 				4E0869691DCC493600E8FCFB /* SelectFortuneController.swift in Sources */,
 				4EA4C86A1DD5548100921EEE /* FindFurnitureController.swift in Sources */,
+				4E0E24961DF9409D00AA5F0B /* ColorChoiceController.swift in Sources */,
 				4ED064FE1DEB1B1E00D9FCB5 /* DirectionAnalysisController.swift in Sources */,
 				4ED064FC1DEB151E00D9FCB5 /* CaptureFurnitureController.swift in Sources */,
+				4E0E249A1DF9A92C00AA5F0B /* HSV.swift in Sources */,
 				4ED064F21DDDE69E00D9FCB5 /* Fortune.swift in Sources */,
 				4E13051B1DB9A2F400D198D0 /* CaptureController.swift in Sources */,
 				4E1305091DB99F7200D198D0 /* ViewController.swift in Sources */,
 				4ED064F61DE773BE00D9FCB5 /* ChoiceController.swift in Sources */,
 				4E1305071DB99F7200D198D0 /* AppDelegate.swift in Sources */,
 				4ED064F81DEB0CAA00D9FCB5 /* SelectFurnitureController.swift in Sources */,
+				4E0E24981DF967ED00AA5F0B /* ResultColorController.swift in Sources */,
 				4E13051F1DB9E8FD00D198D0 /* ImageAnalysisController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

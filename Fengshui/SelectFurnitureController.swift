@@ -22,7 +22,9 @@ class SelectFurnitureController: UIViewController,UIGestureRecognizerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = UIColor.whiteColor()
-    
+    // 遷移するViewを定義する.
+    let mySecondViewController: ChoiceController = ChoiceController()
+    mySecondViewController.view.userInteractionEnabled = false
     titleView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 150 , y: self.view.bounds.height * 0.1, width: 300, height: 60))
     // UIImageViewに画像を設定する.
     titleView.image = titleImage
@@ -64,7 +66,7 @@ class SelectFurnitureController: UIViewController,UIGestureRecognizerDelegate {
   func okTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: CaptureFurnitureController = CaptureFurnitureController()
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
@@ -72,7 +74,7 @@ class SelectFurnitureController: UIViewController,UIGestureRecognizerDelegate {
   func backTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: ChoiceController = ChoiceController()
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }

@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var selectedFortune:String?
   var selectedDirection:String?
+  var selectedColor:String?
   var window: UIWindow?
   // この変数を他のクラスからアクセスする
   //　データ受け渡しグローバルフィールド。空要素（nil）を追加する
@@ -25,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        sleep(1)
         return true
   }
 

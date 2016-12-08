@@ -22,6 +22,7 @@ class DirectionAnalysisController: UIViewController,UIGestureRecognizerDelegate 
   var SaveImageView: UIImageView!
   var PhotoImage = UIImage(named:"takePhoto_g.png")
   var PhotoImageView: UIImageView!
+  var loveImageView: UIImageView!
   var isSuccess:Bool = false
   var TextLabel: UILabel!
   var parameter: [String: AnyObject] = [:]
@@ -55,13 +56,13 @@ class DirectionAnalysisController: UIViewController,UIGestureRecognizerDelegate 
     ColorLabel = UILabel(frame: CGRectMake(0,0,300,50))
     ColorLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.75 , y:self.view.bounds.height * 0.4)
     ColorLabel.textAlignment = NSTextAlignment.Center
-    ColorLabel.text = "ラッキーカラー:青"
+    ColorLabel.text = "認識した色"
     ColorLabel.font = UIFont(name:"HiraKakuProN-W6",size:10)
     self.view.addSubview(ColorLabel)
     
     // 方角を表示するラベルを作成する
     TextLabel = UILabel(frame: CGRectMake(0,0,300,50))
-    TextLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.75)
+    TextLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.65)
     TextLabel.textAlignment = NSTextAlignment.Center
     TextLabel.text = "上昇する運"
     TextLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
@@ -75,6 +76,7 @@ class DirectionAnalysisController: UIViewController,UIGestureRecognizerDelegate 
     HomeTap.delegate = self
     HomeImageView.addGestureRecognizer(HomeTap)
     self.view.addSubview(HomeImageView)
+    
     SaveImageView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.35 , y: self.view.bounds.height * 0.87, width: self.view.bounds.width * 0.3, height: 50))
     // UIImageViewに画像を設定する.
     SaveImageView.image = SaveImage
@@ -124,7 +126,7 @@ class DirectionAnalysisController: UIViewController,UIGestureRecognizerDelegate 
   func PhotoTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: CaptureFurnitureController = CaptureFurnitureController()
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
@@ -132,7 +134,7 @@ class DirectionAnalysisController: UIViewController,UIGestureRecognizerDelegate 
   func SaveTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: CaptureFurnitureController = CaptureFurnitureController()
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
@@ -141,7 +143,7 @@ class DirectionAnalysisController: UIViewController,UIGestureRecognizerDelegate 
   func HomeTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: ChoiceController = ChoiceController()
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }

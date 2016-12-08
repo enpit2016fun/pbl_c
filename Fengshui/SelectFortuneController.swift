@@ -67,7 +67,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = UIColor.whiteColor()
-    setupFortune()
+    
     imageView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 70, y: self.view.bounds.height * 0.08, width: 140, height: 140))
     // UIImageViewに画像を設定する.
     imageView.image = myImage
@@ -287,7 +287,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "love" //appDelegateの変数を操作
     // アニメーションを設定する.
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
@@ -298,7 +298,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     mySecondViewController.selectFortune = "仕事運"
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "job" //appDelegateの変数を操作    // アニメーションを設定する.
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
@@ -310,7 +310,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "money" //appDelegateの変数を操作
     // アニメーションを設定する.
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
@@ -322,7 +322,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "deposit" //appDelegateの変数を操作
     // アニメーションを設定する.
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
@@ -347,7 +347,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "beauty" //appDelegateの変数を操作
     // アニメーションを設定する.
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
@@ -360,7 +360,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "family" //appDelegateの変数を操作
     // アニメーションを設定する.
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
@@ -373,64 +373,12 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedFortune = "life" //appDelegateの変数を操作
     // アニメーションを設定する.
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
 
-  func setupFortune(){
-    let moneyFortune = Fortune()
-    moneyFortune.name = "金運"
-    moneyFortune.color = UIColor.yellowColor()
-    moneyFortune.direction = "西"
-    moneyFortune.colorName = "黄"
-    fortuneArray.append(moneyFortune)
-    let lifeFortune = Fortune()
-    lifeFortune.name = "人生運"
-    lifeFortune.color = UIColor(red: 255 / 255, green:215  / 255, blue: 0 / 255, alpha: 1.0)
-    lifeFortune.direction = "北西"
-    lifeFortune.colorName = "金"
-    fortuneArray.append(lifeFortune)
-    let depositFortune = Fortune()
-    depositFortune.name = "貯金運"
-    depositFortune.color = UIColor.magentaColor()
-    depositFortune.direction = "北"
-    depositFortune.colorName = "ピンク"
-    fortuneArray.append(depositFortune)
-    let healthFortune = Fortune()
-    healthFortune.name = "健康運"
-    healthFortune.color = UIColor.whiteColor()
-    healthFortune.direction = "北東"
-    healthFortune.colorName = "白"
-    fortuneArray.append(healthFortune)
-    let jobFortune = Fortune()
-    jobFortune.name = "仕事運"
-    jobFortune.color = UIColor.redColor()
-    jobFortune.direction = "東"
-    jobFortune.colorName = "赤"
-    fortuneArray.append(jobFortune)
-    let loveFortune = Fortune()
-    loveFortune.name = "恋愛運"
-    loveFortune.color = UIColor.magentaColor()
-    loveFortune.direction = "南東"
-    loveFortune.colorName = "ピンク"
-    fortuneArray.append(loveFortune)
-    let beautyFortune = Fortune()
-    beautyFortune.name = "美容運"
-    beautyFortune.color = UIColor.greenColor()
-    beautyFortune.direction = "南"
-    beautyFortune.colorName = "緑"
-    fortuneArray.append(beautyFortune)
-    let familyFortune = Fortune()
-    familyFortune.name = "家族運"
-    familyFortune.color = UIColor(red: 109 / 255, green:76  / 255, blue: 51 / 255, alpha: 1.0)
-    familyFortune.direction = "南西"
-    familyFortune.colorName = "茶色"
-    fortuneArray.append(familyFortune)
-    let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
-    appDelegate.farray = fortuneArray //appDelegateの変数を操作
-    
-  }
+
   
   
   /*

@@ -64,16 +64,7 @@ class FindFurnitureController: UIViewController,UIWebViewDelegate,UIGestureRecog
     self.view.addSubview(backImageView)
     // Do any additional setup after loading the view.
   }
-  func handleSwipeleft(sender: UITapGestureRecognizer){
-    print("Swiped up!")
-    //    // 遷移するViewを定義する.
-    //    let mySecondViewController: ImageAnalysisController = ImageAnalysisController()
-    //    // アニメーションを設定する.
-    //    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
-    //    // Viewの移動する.
-    //    self.presentViewController(mySecondViewController, animated: true, completion: nil)
-    self.dismissViewControllerAnimated(true, completion: nil)
-  }
+
   
   //ページが読み終わったときに呼ばれる関数
   func webViewDidFinishLoad(webView: UIWebView) {

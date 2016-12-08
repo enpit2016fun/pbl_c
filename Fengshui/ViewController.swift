@@ -80,7 +80,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
     // 遷移するViewを定義する.
     let mySecondViewController: CaptureController = CaptureController()
     // アニメーションを設定する.
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }

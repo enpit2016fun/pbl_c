@@ -21,6 +21,8 @@ extension NSMutableData {
 
 
 
+
+
 class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   var ResultLabel: UILabel!
   var PictureView: UIImageView!
@@ -33,7 +35,11 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   var PhotoImage = UIImage(named:"takePhoto_g.png")
   var PhotoImageView: UIImageView!
   var hanteiView: UIImageView!
-  var hanteiImage = UIImage(named:"たいへんよくできました.png")
+  var hantei1Image = UIImage(named:"たいへんよくできました.png")
+  var hantei2Image = UIImage(named:"よくできました.png")
+  var hantei3Image = UIImage(named:"もう少し頑張りましょう.png")
+  var resultHSV :HSV!
+  var defaultHSV :HSV!
   var view1:UIView!
   var view2:UIView!
   var view3:UIView!
@@ -58,7 +64,10 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   var parsentLabel: UILabel!
   var isSuccess:Bool = false
   var fortuneArray:[Fortune] = []
-  
+  var red: CGFloat     = 1.0
+  var green: CGFloat   = 1.0
+  var blue: CGFloat    = 1.0
+  var alpha: CGFloat   = 1.0
   
   //  var takenImage_accessor: UIImage? {
   //    get {
@@ -80,49 +89,27 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     fortuneArray = appDelegate.farray
+    print(fortuneArray.isEmpty)
     // Viewの背景色を白色にする
     self.view.backgroundColor = UIColor.whiteColor()
     selectedFortune = appDelegate.selectedFortune
     //Viewを並べる
-    view1 = UIView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2 * 0.85))
-    //view1.backgroundColor = UIColor.redColor()
-    view1.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.55 + 8)
-    view2 = UIView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2 * 0.85))
-    //view2.backgroundColor = UIColor.blueColor()
-    view2.center = CGPoint(x:self.view.bounds.width * 0.75,y:self.view.bounds.height * 0.55 + 8 )
-    view3 = UIView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2 * 0.85))
-    //view3.backgroundColor = UIColor.yellowColor()
-    view3.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.85)
-    view4 = UIView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2 * 0.85))
-    //view4.backgroundColor = UIColor.greenColor()
-    view4.center = CGPoint(x:self.view.bounds.width * 0.75,y:self.view.bounds.height * 0.85)
-    view1.layer.borderColor = UIColor.grayColor().CGColor
-    //view1.layer.borderWidth = 0.5
-    view2.layer.borderColor = UIColor.grayColor().CGColor
-    //view2.layer.borderWidth = 0.5
-    view3.layer.borderColor = UIColor.grayColor().CGColor
-    //view3.layer.borderWidth = 0.5
-    view4.layer.borderColor = UIColor.grayColor().CGColor
-    //view4.layer.borderWidth = 0.5
-    //self.view.addSubview(view1)
-    //self.view.addSubview(view2)
-    //self.view.addSubview(view3)
-    //self.view.addSubview(view4)
-    
+    print("selectedFortune::\(selectedFortune!)")
     
     // ラッキーカラーを表示するラベルを作成する
-    luckyLabel = UILabel(frame: CGRectMake(0,0,130,80))
-    luckyLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.5)
+    luckyLabel = UILabel(frame: CGRectMake(0,0,120,30))
+    luckyLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.75 , y:self.view.bounds.height * 0.8)
     luckyLabel.textAlignment = NSTextAlignment.Center
-    luckyLabel.font = UIFont(name:"HiraKakuProN-W6",size:13)
+    luckyLabel.font = UIFont(name:"HiraKakuProN-W6",size:9)
     luckyLabel.textColor = UIColor.lightGrayColor()
-    luckyLabel.text = "ラッキーカラー：黄"
+    //luckyLabel.text = "ラッキーカラー：白"
     self.view.addSubview(luckyLabel)
     
-    self.luckyView = UIView(frame: CGRectMake(0,0,self.view.bounds.width/5.5,self.view.bounds.width/5.5))
-    self.luckyView.center = CGPoint(x:self.view.bounds.width * 0.75 ,y:self.view.bounds.height * 0.7)
+    luckyView = UIView(frame: CGRectMake(0,0,self.view.bounds.width/5.5,self.view.bounds.width/5.5))
+    luckyView.center = CGPoint(x:self.view.bounds.width * 0.75 ,y:self.view.bounds.height * 0.7)
     luckyView.layer.borderWidth = 0.5
     luckyView.layer.borderColor = UIColor.blackColor().CGColor
     //self.luckyView.backgroundColor = UIColor.yellowColor()
@@ -136,10 +123,6 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     fortuneLabel.textColor = UIColor.lightGrayColor()
     self.view.addSubview(fortuneLabel)
     
-    
-    
-    
-    
     //選んだ運勢に合わせて画像を表示
     if selectedFortune! == "love" {
       let loveView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
@@ -152,8 +135,12 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "恋愛運"){
           self.luckyView.backgroundColor = farr.color
+          farr.color?.getRed(&red,green: &green,blue: &blue,alpha: &alpha)
+          print("R:\(red) G:\(green) B:\(blue) a:\(alpha)")
+          defaultHSV = fromRGB(red, green: green, blue: blue)
           colorName = farr.colorName!
           luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          print("ラッキーカラー：\(farr.colorName!)")
           self.view.addSubview(luckyLabel)
           print(farr.name)
           print(farr.color)
@@ -162,6 +149,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       }
       
     }else if selectedFortune! == "job" {
+      print("--------------------call-----------------")
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       jobView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
       // UIImageViewに画像を設定する.
@@ -169,18 +157,24 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       self.view.addSubview(jobView)
       fortuneLabel.text = "仕事運"
       for farr in fortuneArray {
+        print("--------------------call-----------------")
+        print(farr.name!)
+        print(farr)
         print(farr.name!)
         if (farr.name! == "仕事運"){
           self.luckyView.backgroundColor = farr.color
+          farr.color?.getRed(&red,green: &green,blue: &blue,alpha: &alpha)
+          print("R:\(red) G:\(green) B:\(blue) a:\(alpha)")
+          defaultHSV = fromRGB(red, green: green, blue: blue)
           colorName = farr.colorName!
-          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view.addSubview(luckyLabel)
           print(farr.name)
-          print(farr.color)
+          print(farr.colorName!)
           self.view.addSubview(luckyView)
         }
       }
-
+      
     }else if selectedFortune! == "money" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       jobView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
@@ -189,18 +183,22 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
       self.view.addSubview(jobView)
       fortuneLabel.text = "金運"
       for farr in fortuneArray {
+        print(farr)
         print(farr.name!)
         if (farr.name! == "金運"){
           self.luckyView.backgroundColor = farr.color
+          farr.color?.getRed(&red,green: &green,blue: &blue,alpha: &alpha)
+          print("R:\(red) G:\(green) B:\(blue) a:\(alpha)")
+          defaultHSV = fromRGB(red, green: green, blue: blue)
           colorName = farr.colorName!
-          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view.addSubview(luckyLabel)
-          print(farr.name)
-          print(farr.color)
+          print(farr.name!)
+          print(farr.color!)
           self.view.addSubview(luckyView)
         }
       }
-
+      
       
     }else if selectedFortune! == "deposit" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
@@ -213,15 +211,18 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "貯金運"){
           self.luckyView.backgroundColor = farr.color
+          farr.color?.getRed(&red,green: &green,blue: &blue,alpha: &alpha)
+          print("R:\(red) G:\(green) B:\(blue) a:\(alpha)")
+          defaultHSV = fromRGB(red, green: green, blue: blue)
           colorName = farr.colorName!
-          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view.addSubview(luckyLabel)
           print(farr.name)
           print(farr.color)
           self.view.addSubview(luckyView)
         }
       }
-
+      
     }else if selectedFortune! == "health" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       jobView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
@@ -233,15 +234,18 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "健康運"){
           self.luckyView.backgroundColor = farr.color
+          farr.color?.getRed(&red,green: &green,blue: &blue,alpha: &alpha)
+          print("R:\(red) G:\(green) B:\(blue) a:\(alpha)")
+          defaultHSV = fromRGB(red, green: green, blue: blue)
           colorName = farr.colorName!
-          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
-          self.view3.addSubview(luckyLabel)
-          print(farr.name)
-          print(farr.color)
+          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.view.addSubview(luckyLabel)
+          print(farr.name!)
+          print(farr.color!)
           self.view.addSubview(luckyView)
         }
       }
-
+      
     }else if selectedFortune! == "family" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       jobView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
@@ -253,15 +257,18 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "家族運"){
           self.luckyView.backgroundColor = farr.color
+          farr.color?.getRed(&red,green: &green,blue: &blue,alpha: &alpha)
+          print("R:\(red) G:\(green) B:\(blue) a:\(alpha)")
+          defaultHSV = fromRGB(red, green: green, blue: blue)
           colorName = farr.colorName!
-          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view.addSubview(luckyLabel)
           print(farr.name)
           print(farr.color)
           self.view.addSubview(luckyView)
         }
       }
-
+      
     }else if selectedFortune! == "beauty" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       jobView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
@@ -273,15 +280,18 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "美容運"){
           self.luckyView.backgroundColor = farr.color
+          farr.color?.getRed(&red,green: &green,blue: &blue,alpha: &alpha)
+          print("R:\(red) G:\(green) B:\(blue) a:\(alpha)")
+          defaultHSV = fromRGB(red , green: green, blue: blue )
           colorName = farr.colorName!
-          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view.addSubview(luckyLabel)
           print(farr.name)
           print(farr.color)
           self.view.addSubview(luckyView)
         }
       }
-
+      
     }else {
       let lifeView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       lifeView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
@@ -293,23 +303,21 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
         print(farr.name!)
         if (farr.name! == "人生運"){
           self.luckyView.backgroundColor = farr.color
+          farr.color?.getRed(&red,green: &green,blue: &blue,alpha: &alpha)
+          print("R:\(red) G:\(green) B:\(blue) a:\(alpha)")
+          defaultHSV = fromRGB(red, green: green, blue: blue)
           colorName = farr.colorName!
-          luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
+          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view.addSubview(luckyLabel)
           print(farr.name)
           print(farr.color)
           self.view.addSubview(luckyView)
         }
       }
-
+      
     }
     
-    hanteiView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.5, y: self.view.bounds.height * 0.45, width: 120, height: 120))
-    // UIImageViewに画像を設定する.
-    hanteiView.image = hanteiImage
-    hanteiView.alpha = 0.8
-    self.view.addSubview(hanteiView)
-
+    
     
     HomeImageView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.68 , y: self.view.bounds.height * 0.87, width: self.view.bounds.width * 0.3, height: 50))
     // UIImageViewに画像を設定する.
@@ -348,15 +356,21 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     // 方角を表示するラベルを作成する
     kaisetsuLabel = UITextView(frame: CGRectMake(0,0,200,150))
     kaisetsuLabel.backgroundColor = UIColor.clearColor()
-    kaisetsuLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.58)
+    kaisetsuLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.62)
     kaisetsuLabel.textAlignment = NSTextAlignment.Left
     kaisetsuLabel.textColor = UIColor.blackColor()
     kaisetsuLabel.text = "水の気が強い方位なので空間が汚れると気がよどむ傾向も強いのでマメに掃除をし清潔な状態をキープします。冷えやすい方位なのでレイアウトするインテリアは暖かみを感じられるものがベストです。"
     kaisetsuLabel.font = UIFont(name:"HiraKakuProN-W6",size:7)
     self.view.addSubview(kaisetsuLabel)
-
     
-
+    hanteiView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.5 - 40, y: self.view.bounds.height * 0.44, width: 80, height: 80))
+    // UIImageViewに画像を設定する.
+    //hanteiView.image = hanteiImage
+    hanteiView.alpha = 0.4
+    self.view.addSubview(hanteiView)
+    
+    
+    
     
     
     //撮影した画像をViewに描画
@@ -397,7 +411,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     // アニメーションを設定する.
     mySecondViewController.color = colorName
     print(colorName)
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
@@ -446,9 +460,20 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
             let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.circleColor = UIColor(red: json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["red"].number! as CGFloat / 255, green: json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["green"].number! as CGFloat / 255, blue: json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["blue"].number! as CGFloat / 255, alpha: 1.0)
             let score:Double = json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["score"].number! as Double
+            self.resultHSV = self.fromRGB(json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["red"].number! as CGFloat / 255,green: json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["green"].number! as CGFloat / 255,blue: json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["blue"].number! as CGFloat / 255)
+            print("red==\(json["responses"][0]["imagePropertiesAnnotation"]["dominantColors"]["colors"][0]["color"]["red"].number! as Int / 255)")
+            print("HSV.hue=\(self.resultHSV.hue),HSV.saturation=\(self.resultHSV.saturation),HSV.value =\(self.resultHSV.value)")
             print(score)
+            let result = self.hsvDistance(self.defaultHSV, hsv2: self.resultHSV)
+            if result > 75 {
+              self.hanteiView.image = self.hantei1Image!
+            }else if result > 40 {
+              self.hanteiView.image = self.hantei2Image!
+            }else {
+              self.hanteiView.image = self.hantei3Image!
+            }
             //self.view.addSubview(self.colorView)
-            appDelegate.score = score
+            appDelegate.score = result / 100
             self.addCircleView()
             
             // パーセンテージを表示するラベルを作成する
@@ -457,7 +482,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
             self.parsentLabel.textAlignment = NSTextAlignment.Center
             self.parsentLabel.font = UIFont(name:"HiraKakuProN-W6",size:18)
             self.parsentLabel.textColor = UIColor.lightGrayColor()
-            let text = String(format: "%.0f",score * 100)
+            let text = String(format: "%.0f",result)
             self.parsentLabel.text = text + "%"
             self.view.addSubview(self.parsentLabel)
             
@@ -466,18 +491,34 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     }
   }
   
-  
-//  //撮影した画像の表示
-//  private func initImageView(){
-//    // UIImage インスタンスの生成
-//    let image:UIImage = self.takenImage!
-//    let imageView = UIImageView(frame: CGRect(x: self.view.bounds.width/2,y: self.view.bounds.height * 0.15 + 20,width: self.view.bounds.width * 0.7,height: self.view.bounds.height * 0.3))
-//    imageView.image = image
-//    // UIImageViewのインスタンスをビューに追加
-//    // 画像の表示する座標を指定する.
-//    imageView.center = CGPoint(x:self.view.bounds.width/2,y:self.view.bounds.height * 0.2)
-//    self.view.addSubview(imageView)
-//  }
+  func hsvDistance(hsv1:HSV,hsv2:HSV) -> Double{
+    let dist_h = abs(hsv1.hue - hsv2.hue)
+    print("HSVvalue=\(hsv1.hue,hsv2.hue)")
+    print("HSVdistance1\(dist_h)")
+    var distance = 0.0
+    let numbers = [dist_h, 360.0 - dist_h]
+    distance = distance + (numbers.minElement()! * 2)
+    print("HSVdistance1 = \(distance)")
+    distance = distance + abs(hsv1.saturation - hsv2.saturation) * 180
+    print("HSVsaturation=\(hsv1.saturation,hsv2.saturation)")
+    print("HSVdistance2 = \(distance)")
+    print("HSVvalue=\(hsv1.value,hsv2.value)")
+    distance = distance + abs(hsv1.value - hsv2.value) * 180
+    print("HSVdistance3 = \(distance)")
+    let result = 100 - (distance / 1836100 * 100)
+    return result
+  }
+  //  //撮影した画像の表示
+  //  private func initImageView(){
+  //    // UIImage インスタンスの生成
+  //    let image:UIImage = self.takenImage!
+  //    let imageView = UIImageView(frame: CGRect(x: self.view.bounds.width/2,y: self.view.bounds.height * 0.15 + 20,width: self.view.bounds.width * 0.7,height: self.view.bounds.height * 0.3))
+  //    imageView.image = image
+  //    // UIImageViewのインスタンスをビューに追加
+  //    // 画像の表示する座標を指定する.
+  //    imageView.center = CGPoint(x:self.view.bounds.width/2,y:self.view.bounds.height * 0.2)
+  //    self.view.addSubview(imageView)
+  //  }
   
   func Image2String(image:UIImage) -> String? {
     
@@ -564,7 +605,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   func PhotoTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: CaptureController = CaptureController()
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
@@ -572,7 +613,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   func SaveTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: CaptureFurnitureController = CaptureFurnitureController()
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
@@ -581,11 +622,58 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   func HomeTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
     let mySecondViewController: ChoiceController = ChoiceController()
-    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
+    // rootViewControllerの2つ先のViewControllerに戻る
+    //self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
-
+  
+  func fromRGB(red: CGFloat, green: CGFloat, blue: CGFloat) -> HSV {
+    // R、GおよびBが0.0を最小量、1.0を最大値とする0.0から1.0の範囲にある
+    let r = Double(red)
+    let g = Double(green)
+    let b = Double(blue)
+    
+    let maxValue = max(max(r, g), b)
+    let minValue = min(min(r, g), b)
+    let sub = maxValue - minValue
+    
+    var h: Double = 0
+    var s: Double = 0
+    var v: Double = 0
+    
+    // Calculate Hue
+    if sub == 0 {
+      // MAX = MIN(例・S = 0)のとき、 Hは定義されない。
+      h = 0
+    } else {
+      if (maxValue == r) {
+        h = (60 * (g - b) / sub) + 0;
+      } else if (maxValue == g) {
+        h = (60 * (b - r) / sub) + 120;
+      } else if (maxValue == b) {
+        h = (60 * (r - g) / sub) + 240;
+      }
+      // さらに H += 360 if H < 0
+      if (h < 0) {
+        h += 360;
+      }
+    }
+    
+    // Calculate Saturation
+    if (maxValue > 0) {
+      s = sub / maxValue * 255;
+    }
+    
+    // Calculate Value
+    v = maxValue * 255
+    
+    return HSV(hue: floor(h), saturation: floor(s), value: floor(v))
+  }
+  
+  
+  
   
   /*
    // MARK: - Navigation
