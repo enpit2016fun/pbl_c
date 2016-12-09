@@ -322,7 +322,7 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
       //mySecondViewController.takenImage_accessor  = image
       mySecondViewController.takenImage = image
       // Viewの移動する.
-      if sender.state == .Ended {      //追加部分
+      if sender.state == .Changed {      //追加部分
         self.cameraView.image = self.cameraImage
         self.view.addSubview(self.cameraView)
         print("\n\nPressing is finished!!!!!!!\n")

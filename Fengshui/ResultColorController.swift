@@ -159,7 +159,7 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
       self.view.addSubview(healthDirectionLabel)
       self.luckyView.backgroundColor = UIColor.whiteColor()
       self.view.addSubview(luckyView)
-          
+      
     }else if selectedColor! == "ピンク" {
       let depositView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       depositView.center = CGPoint(x:self.view.bounds.width * 0.3,y:self.view.bounds.height * 0.5)
@@ -241,9 +241,6 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
       self.view.addSubview(lifeDirectionLabel)
       self.luckyView.backgroundColor = UIColor(red: 124.0/255, green: 96.0/255, blue: 53.0/255, alpha: 1.0)
       self.view.addSubview(luckyView)
-
-      
-      
     }else if selectedColor! == "赤" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       jobView.center = CGPoint(x:self.view.bounds.width/2,y:self.view.bounds.height * 0.5)
@@ -289,7 +286,7 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
       self.view.addSubview(luckyView)
     }else if selectedColor! == "紫" {
       let healthView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
-      healthView.center = CGPoint(x:self.view.bounds.width * 0.5,y:self.view.bounds.height * 0.5)
+      healthView.center = CGPoint(x:self.view.bounds.width/2,y:self.view.bounds.height * 0.5)
       healthView.image = healthImage
       self.view.addSubview(healthView)
       let healthLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
@@ -307,10 +304,10 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
       healthDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
       self.view.addSubview(healthDirectionLabel)
       self.luckyView.backgroundColor = UIColor(red: 142.0/255, green: 0.0, blue: 204.0/255, alpha: 1.0)
-      self.luckyView.addSubview(luckyView)
+      self.view.addSubview(luckyView)
     }else if selectedColor! == "緑" {
       let beautyView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
-      beautyView.center = CGPoint(x:self.view.bounds.width * 0.5,y:self.view.bounds.height * 0.5)
+      beautyView.center = CGPoint(x:self.view.bounds.width/2,y:self.view.bounds.height * 0.5)
       beautyView.image = beautyImage
       self.view.addSubview(beautyView)
       let beautyLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
@@ -328,10 +325,11 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
       beautyDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
       self.view.addSubview(beautyDirectionLabel)
       self.luckyView.backgroundColor = UIColor.greenColor()
-      self.luckyView.addSubview(luckyView)
+      self.view.addSubview(luckyView)
+      
     }else if selectedColor! == "黄緑" {
       let familyView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
-      familyView.center = CGPoint(x:self.view.bounds.width * 0.5,y:self.view.bounds.height * 0.5)
+      familyView.center = CGPoint(x:self.view.bounds.width/2,y:self.view.bounds.height * 0.5)
       familyView.image = familyImage
       self.view.addSubview(familyView)
       let familyLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
@@ -345,12 +343,12 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
       familyDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.65)
       familyDirectionLabel.textAlignment = NSTextAlignment.Center
       familyDirectionLabel.textColor = UIColor.orangeColor()
-      familyDirectionLabel.text = "南西"
+      familyDirectionLabel.text = "南"
       familyDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
       self.view.addSubview(familyDirectionLabel)
       self.luckyView.backgroundColor = UIColor(red: 171.0/255, green: 255.0/255, blue: 127.0/255, alpha: 1.0)
-      self.luckyView.addSubview(luckyView)
-    }else {
+      self.view.addSubview(luckyView)
+    } else {
       let moneyView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       moneyView.center = CGPoint(x:self.view.bounds.width/2,y:self.view.bounds.height * 0.5)
       moneyView.image = moneyImage
@@ -370,10 +368,10 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
       moneyDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
       self.view.addSubview(moneyDirectionLabel)
       self.luckyView.backgroundColor = UIColor.yellowColor()
-      self.luckyView.addSubview(luckyView)
+      self.view.addSubview(luckyView)
     }
-  
-  
+    
+    
     HomeImageView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.68 , y: self.view.bounds.height * 0.87, width: self.view.bounds.width * 0.3, height: 50))
     // UIImageViewに画像を設定する.
     HomeImageView.image = HomeImage
@@ -410,7 +408,7 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
     
   }
   
-
+  
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()

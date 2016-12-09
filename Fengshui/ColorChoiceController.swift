@@ -264,6 +264,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
   }
   
   func view1TapAction(sender: UITapGestureRecognizer){
+    viewBorderReset()
     self.view1.layer.borderColor = UIColor.orangeColor().CGColor
     self.view.addSubview(view1)
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
@@ -271,6 +272,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
   }
   
   func view2TapAction(sender: UITapGestureRecognizer){
+    viewBorderReset()
     self.view2.layer.borderColor = UIColor.orangeColor().CGColor
     self.view.addSubview(view2)
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
@@ -278,6 +280,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
   }
   
   func view3TapAction(sender: UITapGestureRecognizer){
+    viewBorderReset()
     self.view3.layer.borderColor = UIColor.orangeColor().CGColor
     self.view.addSubview(view3)
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
@@ -285,6 +288,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
   }
   
   func view4TapAction(sender: UITapGestureRecognizer){
+    viewBorderReset()
     self.view4.layer.borderColor = UIColor.orangeColor().CGColor
     self.view.addSubview(view4)
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
@@ -292,6 +296,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
   }
   
   func view5TapAction(sender: UITapGestureRecognizer){
+    viewBorderReset()
     self.view5.layer.borderColor = UIColor.orangeColor().CGColor
     self.view.addSubview(view5)
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
@@ -300,6 +305,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
   }
   
   func view6TapAction(sender: UITapGestureRecognizer){
+    viewBorderReset()
     self.view6.layer.borderColor = UIColor.orangeColor().CGColor
     self.view.addSubview(view6)
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
@@ -308,6 +314,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
   }
   
   func view7TapAction(sender: UITapGestureRecognizer){
+    viewBorderReset()
     self.view7.layer.borderColor = UIColor.orangeColor().CGColor
     self.view.addSubview(view7)
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
@@ -315,6 +322,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
   }
   
   func view8TapAction(sender: UITapGestureRecognizer){
+    viewBorderReset()
     self.view8.layer.borderColor = UIColor.orangeColor().CGColor
     self.view.addSubview(view8)
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
@@ -322,12 +330,24 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
   }
   
   func view9TapAction(sender: UITapGestureRecognizer){
+    viewBorderReset()
     self.view9.layer.borderColor = UIColor.orangeColor().CGColor
     self.view.addSubview(view9)
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedColor = "黄"
   }
   
+  func viewBorderReset(){
+    self.view1.layer.borderColor = UIColor.lightGrayColor().CGColor
+    self.view2.layer.borderColor = UIColor.lightGrayColor().CGColor
+    self.view3.layer.borderColor = UIColor.lightGrayColor().CGColor
+    self.view4.layer.borderColor = UIColor.lightGrayColor().CGColor
+    self.view5.layer.borderColor = UIColor.lightGrayColor().CGColor
+    self.view6.layer.borderColor = UIColor.lightGrayColor().CGColor
+    self.view7.layer.borderColor = UIColor.lightGrayColor().CGColor
+    self.view8.layer.borderColor = UIColor.lightGrayColor().CGColor
+    self.view9.layer.borderColor = UIColor.lightGrayColor().CGColor
+  }
   
   
   

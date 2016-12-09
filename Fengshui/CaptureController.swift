@@ -195,6 +195,7 @@ class CaptureController: UIViewController, UIGestureRecognizerDelegate {
       //mySecondViewController.takenImage_accessor  = image
       mySecondViewController.takenImage = image
       // Viewの移動する.
+      sender.state
 //      if sender.state == .Ended {      //追加部分
 //        self.cameraView.image = self.cameraImage
 //        self.view.addSubview(self.cameraView)

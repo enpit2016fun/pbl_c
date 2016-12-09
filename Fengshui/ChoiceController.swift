@@ -98,7 +98,6 @@ class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
   
   func furnitureTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
-    self.furnitureView.alpha = 0.5
     let mySecondViewController: ColorChoiceController = ColorChoiceController()
     //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
