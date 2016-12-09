@@ -26,8 +26,8 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = UIColor.whiteColor()
-    let mySecondViewController: ChoiceController = ChoiceController()
-    mySecondViewController.view.userInteractionEnabled = false
+//    let mySecondViewController: ChoiceController = ChoiceController()
+//    mySecondViewController.view.userInteractionEnabled = false
     //self.view.userInteractionEnabled = false
     
     OkImageView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.02 , y: self.view.bounds.height * 0.87, width: self.view.bounds.width * 0.45, height: 50))
@@ -71,7 +71,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
     view1.layer.borderWidth = 1
     
     view1.userInteractionEnabled = true
-    let  view1Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view1TapAction(_:)))
+    let view1Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view1TapAction(_:)))
     view1Tap.delegate = self
     view1.addGestureRecognizer(view1Tap)
     
@@ -84,7 +84,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
     view2.layer.borderColor = UIColor.lightGrayColor().CGColor
     view2.layer.borderWidth = 1
     view2.userInteractionEnabled = true
-    let  view2Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view2TapAction(_:)))
+    let view2Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view2TapAction(_:)))
     view2Tap.delegate = self
     view2.addGestureRecognizer(view2Tap)
     self.view.addSubview(view2)
@@ -103,7 +103,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
     view3.layer.borderColor = UIColor.lightGrayColor().CGColor
     view3.layer.borderWidth = 1
     view3.userInteractionEnabled = true
-    let  view3Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view3TapAction(_:)))
+    let view3Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view3TapAction(_:)))
     view3Tap.delegate = self
     view3.addGestureRecognizer(view3Tap)
     self.view.addSubview(view3)
@@ -141,7 +141,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
     view5.layer.borderColor = UIColor.lightGrayColor().CGColor
     view5.layer.borderWidth = 1
     view5.userInteractionEnabled = true
-    let  view5Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view5TapAction(_:)))
+    let view5Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view5TapAction(_:)))
     view5Tap.delegate = self
     view5.addGestureRecognizer(view5Tap)
     self.view.addSubview(view5)
@@ -156,11 +156,11 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
     
     view6 = UIView(frame:CGRectMake(0, 0, 50, 50))
     view6.center = CGPoint(x:self.view.bounds.width * 0.75,y:self.view.bounds.height * 0.5)
-    view6.backgroundColor = UIColor(red: 142.0/255, green: 0.0, blue: 204.0/255, alpha: 1.0)
+    view6.backgroundColor = UIColor(red: 209.0/255, green: 0/255, blue: 215/255, alpha: 1.0)
     view6.layer.borderColor = UIColor.lightGrayColor().CGColor
     view6.layer.borderWidth = 1
     view6.userInteractionEnabled = true
-    let  view6Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view6TapAction(_:)))
+    let view6Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view6TapAction(_:)))
     view6Tap.delegate = self
     view6.addGestureRecognizer(view6Tap)
     self.view.addSubview(view6)
@@ -179,7 +179,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
     view7.layer.borderColor = UIColor.lightGrayColor().CGColor
     view7.layer.borderWidth = 1
     view7.userInteractionEnabled = true
-    let  view7Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view7TapAction(_:)))
+    let view7Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view7TapAction(_:)))
     view7Tap.delegate = self
     view7.addGestureRecognizer(view7Tap)
     self.view.addSubview(view7)
@@ -198,7 +198,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
     view8.layer.borderColor = UIColor.lightGrayColor().CGColor
     view8.layer.borderWidth = 1
     view1.userInteractionEnabled = true
-    let  view8Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view8TapAction(_:)))
+    let view8Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view8TapAction(_:)))
     view8Tap.delegate = self
     view8.addGestureRecognizer(view8Tap)
     self.view.addSubview(view8)
@@ -216,7 +216,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
     view9.layer.borderColor = UIColor.lightGrayColor().CGColor
     view9.layer.borderWidth = 1
     view9.userInteractionEnabled = true
-    let  view9Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view9TapAction(_:)))
+    let view9Tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ColorChoiceController.view9TapAction(_:)))
     view9Tap.delegate = self
     view9.addGestureRecognizer(view9Tap)
     view9.backgroundColor = UIColor.yellowColor()
@@ -241,10 +241,17 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
   }
   
   func okTapAction(sender: UITapGestureRecognizer){
+    self.OkImageView.backgroundColor = UIColor.blackColor()
+    self.OkImageView.alpha = 0.8
     // 遷移するViewを定義する.
     let mySecondViewController: ResultColorController = ResultColorController()
     //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.
+//    if sender.state == .Ended {      //追加部分
+//      self.OkImageView.backgroundColor = UIColor.clearColor()
+//      self.OkImageView.alpha = 1
+//    }
+
     self.presentViewController(mySecondViewController, animated: true, completion: nil)
   }
   
@@ -289,6 +296,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
     self.view.addSubview(view5)
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedColor = "青"
+    print("appDelegate.selectedColor=\(appDelegate.selectedColor)")
   }
   
   func view6TapAction(sender: UITapGestureRecognizer){
@@ -296,6 +304,7 @@ class ColorChoiceController: UIViewController,UIGestureRecognizerDelegate {
     self.view.addSubview(view6)
     let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
     appDelegate.selectedColor = "紫"
+    print("appDelegate.selectedColor=\(appDelegate.selectedColor)")
   }
   
   func view7TapAction(sender: UITapGestureRecognizer){

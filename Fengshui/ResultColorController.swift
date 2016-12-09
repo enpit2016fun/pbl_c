@@ -75,7 +75,7 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
     fortuneArray = appDelegate.farray
     // Viewの背景色を白色にする
     self.view.backgroundColor = UIColor.whiteColor()
-    selectedColor = appDelegate.selectedColor
+    self.selectedColor = appDelegate.selectedColor
     //Viewを並べる
     
     // ラッキーカラーを表示するラベルを作成する
@@ -285,13 +285,8 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
       jobDirectionLabel.text = "東"
       jobDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
       self.view.addSubview(jobDirectionLabel)
-      self.luckyView.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1.0)
-      self.view.addSubview(luckyView)
-      
-
       self.luckyView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 1.0)
       self.view.addSubview(luckyView)
-      
     }else if selectedColor! == "紫" {
       let healthView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       healthView.center = CGPoint(x:self.view.bounds.width * 0.5,y:self.view.bounds.height * 0.5)
@@ -332,7 +327,6 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
       beautyDirectionLabel.text = "南"
       beautyDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
       self.view.addSubview(beautyDirectionLabel)
-
       self.luckyView.backgroundColor = UIColor.greenColor()
       self.luckyView.addSubview(luckyView)
     }else if selectedColor! == "黄緑" {

@@ -4,7 +4,7 @@ import AVFoundation
 class CaptureController: UIViewController, UIGestureRecognizerDelegate {
   var cameraView: UIImageView!
   var cameraImage = UIImage(named:"camera.png")
-  var orangeCameraImage = UIImage(named:"カメラオレンジ.png")
+  var orangeCameraImage = UIImage(named:"orangeCamera.png")
   // AVキャプチャセッション
   var avSession: AVCaptureSession!
   
@@ -169,7 +169,7 @@ class CaptureController: UIViewController, UIGestureRecognizerDelegate {
   
   // 撮影をする
   func takePhoto(sender: UITapGestureRecognizer){
-      cameraView.image = orangeCameraImage
+      self.cameraView.image = orangeCameraImage
       self.view.addSubview(cameraView)
     
     // ビデオ出力に接続する
@@ -195,11 +195,11 @@ class CaptureController: UIViewController, UIGestureRecognizerDelegate {
       //mySecondViewController.takenImage_accessor  = image
       mySecondViewController.takenImage = image
       // Viewの移動する.
-      if sender.state == .Ended {      //追加部分
-        self.cameraView.image = self.cameraImage
-        self.view.addSubview(self.cameraView)
-        print("\n\nPressing is finished!!!!!!!\n")
-      }
+//      if sender.state == .Ended {      //追加部分
+//        self.cameraView.image = self.cameraImage
+//        self.view.addSubview(self.cameraView)
+//        print("\n\nPressing is finished!!!!!!!\n")
+//      }
       self.presentViewController(mySecondViewController, animated: true, completion: nil)
       
       

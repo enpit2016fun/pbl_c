@@ -31,7 +31,7 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
   
   var cameraView: UIImageView!
   var cameraImage = UIImage(named:"camera.png")
-  var orangeCameraImage = UIImage(named:"カメラオレンジ.png")
+  var orangeCameraImage = UIImage(named:"orangeCamera.png")
   var lm: CLLocationManager! = nil
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -191,23 +191,25 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
       appDelegate.selectedFortune = "deposit"
       statusView.backgroundColor = UIColor.magentaColor()
     } else if newHeading.magneticHeading >= 45 && newHeading.magneticHeading < 90  {
-      locationLabel.text = "北西"
-      self.fortuneView.image = lifeImage
-      self.textLabel.text = "人生運"
-      appDelegate.selectedFortune = "life"
-      statusView.backgroundColor = UIColor(red: 255 / 255, green:215  / 255, blue: 0 / 255, alpha: 1.0)
+      locationLabel.text = "北東"
+      self.fortuneView.image = healthImage
+      self.textLabel.text = "健康運"
+      appDelegate.selectedFortune = "health"
+      statusView.backgroundColor = UIColor.whiteColor()
+      
     } else if newHeading.magneticHeading >= 90 && newHeading.magneticHeading < 135  {
-      locationLabel.text = "西"
-      self.fortuneView.image = moneyImage
-      self.textLabel.text = "金運"
-      appDelegate.selectedFortune = "money"
-      statusView.backgroundColor = UIColor.yellowColor()
-    } else if newHeading.magneticHeading >= 135 && newHeading.magneticHeading < 180 {
-      locationLabel.text = "南西"
-      self.fortuneView.image = familyImage
-      self.textLabel.text = "家族運"
-      appDelegate.selectedFortune = "family"
-      statusView.backgroundColor = UIColor(red: 109 / 255, green:76  / 255, blue: 51 / 255, alpha: 1.0)
+      locationLabel.text = "東"
+      self.fortuneView.image = jobImage
+      self.textLabel.text = "仕事運"
+      appDelegate.selectedFortune = "job"
+      statusView.backgroundColor = UIColor.redColor()
+          } else if newHeading.magneticHeading >= 135 && newHeading.magneticHeading < 180 {
+      locationLabel.text = "南東"
+      self.fortuneView.image = loveImage
+      self.textLabel.text = "恋愛運"
+      appDelegate.selectedFortune = "love"
+      statusView.backgroundColor = UIColor.magentaColor()
+      
     } else if newHeading.magneticHeading >= 180 && newHeading.magneticHeading < 225  {
       
       locationLabel.text = "南"
@@ -217,24 +219,25 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
       statusView.backgroundColor = UIColor.greenColor()
     } else if newHeading.magneticHeading >= 225 && newHeading.magneticHeading < 270  {
       
-      locationLabel.text = "南東"
-      self.fortuneView.image = loveImage
-      self.textLabel.text = "恋愛運"
-      appDelegate.selectedFortune = "love"
-      statusView.backgroundColor = UIColor.magentaColor()
+      locationLabel.text = "南西"
+      self.fortuneView.image = familyImage
+      self.textLabel.text = "家族運"
+      appDelegate.selectedFortune = "family"
+      statusView.backgroundColor = UIColor(red: 109 / 255, green:76  / 255, blue: 51 / 255, alpha: 1.0)
     } else if newHeading.magneticHeading >= 270 && newHeading.magneticHeading < 315  {
       
-      locationLabel.text = "東"
-      self.fortuneView.image = jobImage
-      self.textLabel.text = "仕事運"
-      appDelegate.selectedFortune = "job"
-      statusView.backgroundColor = UIColor.redColor()
+      locationLabel.text = "西"
+      self.fortuneView.image = moneyImage
+      self.textLabel.text = "金運"
+      appDelegate.selectedFortune = "money"
+      statusView.backgroundColor = UIColor.yellowColor()
+
     } else {
-      locationLabel.text = "北東"
-      self.fortuneView.image = healthImage
-      self.textLabel.text = "健康運"
-      appDelegate.selectedFortune = "health"
-      statusView.backgroundColor = UIColor.whiteColor()
+      locationLabel.text = "北西"
+      self.fortuneView.image = lifeImage
+      self.textLabel.text = "人生運"
+      appDelegate.selectedFortune = "life"
+      statusView.backgroundColor = UIColor(red: 255 / 255, green:215  / 255, blue: 0 / 255, alpha: 1.0)
     }
     
     //方角を角度で表示
@@ -294,7 +297,7 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
   
   // 撮影をする
   func takePhoto(sender: UITapGestureRecognizer){
-    cameraView.image = orangeCameraImage
+    self.cameraView.image = orangeCameraImage
     self.view.addSubview(cameraView)
     // ビデオ出力に接続する
     let videoConnection = avOutput.connectionWithMediaType(AVMediaTypeVideo)

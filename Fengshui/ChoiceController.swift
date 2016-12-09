@@ -13,7 +13,7 @@ class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
   var furnitureView: UIImageView!
   var roomView: UIImageView!
   var fortuneView: UIImageView!
-  var titleImage = UIImage(named:"FortunDoctor文字.png")
+  var titleImage = UIImage(named:"FortuneDoctor.png")
   var furnitureImage = UIImage(named:"家具アイコン.png")
   var roomImage = UIImage(named:"部屋アイコン.png")
   var fortuneImage = UIImage(named:"運勢アイコン.png")
@@ -30,7 +30,7 @@ class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
     titleView.image = titleImage
     self.view.addSubview(titleView)
     
-    furnitureView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 40 , y: self.view.bounds.height * 0.25, width: 80, height: 80))
+    furnitureView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 40 , y: self.view.bounds.height * 0.75, width: 80, height: 80))
     // UIImageViewに画像を設定する.
     furnitureView.image = furnitureImage
     
@@ -44,7 +44,7 @@ class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
 
     
     furnitureLabel = UILabel(frame: CGRectMake(0,0,300,50))
-    furnitureLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.45)
+    furnitureLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.95)
     furnitureLabel.textAlignment = NSTextAlignment.Center
     furnitureLabel.text = "家具から占う"
     furnitureLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
@@ -74,7 +74,7 @@ class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
 
 
     
-    roomView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 40 , y: self.view.bounds.height * 0.75, width: 80, height: 80))
+    roomView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 40 , y: self.view.bounds.height * 0.25, width: 80, height: 80))
     // UIImageViewに画像を設定する.
     roomView.image = roomImage
     
@@ -88,7 +88,7 @@ class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
     self.view.addSubview(roomView)
     // 家具占いを表示するラベルを作成する
     roomLabel = UILabel(frame: CGRectMake(0,0,300,50))
-    roomLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.95)
+    roomLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.45)
     roomLabel.textAlignment = NSTextAlignment.Center
     roomLabel.text = "部屋から占う"
     roomLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
@@ -98,6 +98,7 @@ class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
   
   func furnitureTapAction(sender: UITapGestureRecognizer){
     // 遷移するViewを定義する.
+    self.furnitureView.alpha = 0.5
     let mySecondViewController: ColorChoiceController = ColorChoiceController()
     //mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
     // Viewの移動する.

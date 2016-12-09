@@ -50,7 +50,7 @@ class FindFurnitureController: UIViewController,UIWebViewDelegate,UIGestureRecog
         SVProgressHUD.dismiss()
       }
     }
-    backImageView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.1  , y: self.view.bounds.height * 0.07, width: 50, height: 50))
+    backImageView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.01  , y: self.view.bounds.height * 0.04, width: 50, height: 50))
     // UIImageViewに画像を設定する.
     backImageView.image = backImage
     

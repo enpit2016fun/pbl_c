@@ -138,6 +138,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
           farr.color?.getRed(&red,green: &green,blue: &blue,alpha: &alpha)
           print("R:\(red) G:\(green) B:\(blue) a:\(alpha)")
           defaultHSV = fromRGB(red, green: green, blue: blue)
+          print("HSV.hue=\(self.defaultHSV.hue),HSV.saturation=\(self.defaultHSV.saturation),HSV.value =\(self.defaultHSV.value)")
           colorName = farr.colorName!
           luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           print("ラッキーカラー：\(farr.colorName!)")
@@ -237,6 +238,7 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
           farr.color?.getRed(&red,green: &green,blue: &blue,alpha: &alpha)
           print("R:\(red) G:\(green) B:\(blue) a:\(alpha)")
           defaultHSV = fromRGB(red, green: green, blue: blue)
+          print("HSV.hue=\(self.defaultHSV.hue),HSV.saturation=\(self.defaultHSV.saturation),HSV.value =\(self.defaultHSV.value)")
           colorName = farr.colorName!
           self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view.addSubview(luckyLabel)
@@ -260,6 +262,8 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
           farr.color?.getRed(&red,green: &green,blue: &blue,alpha: &alpha)
           print("R:\(red) G:\(green) B:\(blue) a:\(alpha)")
           defaultHSV = fromRGB(red, green: green, blue: blue)
+          print("HSV.hue=\(self.defaultHSV.hue),HSV.saturation=\(self.defaultHSV.saturation),HSV.value =\(self.defaultHSV.value)")
+
           colorName = farr.colorName!
           self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
           self.view.addSubview(luckyLabel)
@@ -497,15 +501,16 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     print("HSVdistance1\(dist_h)")
     var distance = 0.0
     let numbers = [dist_h, 360.0 - dist_h]
-    distance = distance + (numbers.minElement()! * 2)
+    distance = distance + (numbers.minElement()! * 1)
     print("HSVdistance1 = \(distance)")
-    distance = distance + abs(hsv1.saturation - hsv2.saturation) * 180
+    distance = distance + abs(hsv1.saturation - hsv2.saturation) * 1
     print("HSVsaturation=\(hsv1.saturation,hsv2.saturation)")
     print("HSVdistance2 = \(distance)")
     print("HSVvalue=\(hsv1.value,hsv2.value)")
-    distance = distance + abs(hsv1.value - hsv2.value) * 180
+    distance = distance + abs(hsv1.value - hsv2.value) * 1
     print("HSVdistance3 = \(distance)")
-    let result = 100 - (distance / 1836100 * 100)
+    //2let result = 100 - ((distance / 1836100) * 100) //HSV全て使って計算
+    let result = 100 - ((distance / 870) * 100)
     return result
   }
   //  //撮影した画像の表示

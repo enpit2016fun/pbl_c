@@ -126,7 +126,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
         self.nextButton!.enabled = false
         self.nextButton!.alpha = 0.3
       }
-      locationLabel.text = "北西"
+      locationLabel.text = "北東"
     } else if newHeading.magneticHeading >= 90 && newHeading.magneticHeading < 135  {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
@@ -137,7 +137,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
         self.nextButton!.enabled = false
         self.nextButton!.alpha = 0.3
       }
-      locationLabel.text = "西"
+      locationLabel.text = "東"
     } else if newHeading.magneticHeading >= 135 && newHeading.magneticHeading < 180 {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
@@ -148,7 +148,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
         self.nextButton!.enabled = false
         self.nextButton!.alpha = 0.3
       }
-      locationLabel.text = "南西"
+      locationLabel.text = "南東"
     } else if newHeading.magneticHeading >= 180 && newHeading.magneticHeading < 225  {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
@@ -170,7 +170,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
         self.nextButton!.enabled = false
         self.nextButton!.alpha = 0.3
       }
-      locationLabel.text = "南東"
+      locationLabel.text = "南西"
     } else if newHeading.magneticHeading >= 270 && newHeading.magneticHeading < 315  {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
@@ -181,7 +181,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
         self.nextButton!.enabled = false
         self.nextButton!.alpha = 0.3
       }
-      locationLabel.text = "東"
+      locationLabel.text = "西"
     } else {
       if (selectedDirection == locationLabel.text){
         locationLabel.textColor = UIColor.redColor()
@@ -192,7 +192,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
         self.nextButton!.enabled = false
         self.nextButton!.alpha = 0.3
       }
-      locationLabel.text = "北東"
+      locationLabel.text = "北西"
     }
   
     //方角を角度で表示
