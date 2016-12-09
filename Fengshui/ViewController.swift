@@ -5,8 +5,10 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
   var locationLabel: UILabel!
   var teachLabel: UILabel!
   var lm: CLLocationManager! = nil
-  var myImage = UIImage(named:"方角.png")
+  var myImage = UIImage(named:"方位磁石.png")
+  var girlImage = UIImage(named:"女の子only.png")
   var myRotateView:UIImageView! = nil
+  var myDirectionView:UIImageView! = nil
   var selectFortune:String?
   let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
   var fortuneArray:[Fortune] = []
@@ -17,11 +19,16 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
     super.viewDidLoad()
     fortuneArray = appDelegate.farray
     self.view.backgroundColor = UIColor.whiteColor()
-    myRotateView = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 100 , y: self.view.bounds.height/6, width: 200, height: 200))
+    myRotateView = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 50 , y: self.view.bounds.height * 0.275, width: 100, height: 100))
     // UIImageViewに画像を設定する.
-    myRotateView.image = myImage
+    myRotateView.image = girlImage
     // Viewに張りつけ.
     self.view.addSubview(myRotateView)
+    myDirectionView = UIImageView(frame: CGRect(x: self.view.bounds.width/2 - 100 , y: self.view.bounds.height/6, width: 200, height: 200))
+    // UIImageViewに画像を設定する.
+    myDirectionView.image = myImage
+    // Viewに張りつけ.
+    self.view.addSubview(myDirectionView)
     // 方角を表示するラベルを作成する
     locationLabel = UILabel(frame: CGRectMake(0,0,300,50))
     locationLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.7)

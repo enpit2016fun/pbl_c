@@ -31,6 +31,7 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
   
   var cameraView: UIImageView!
   var cameraImage = UIImage(named:"camera.png")
+  var orangeCameraImage = UIImage(named:"カメラオレンジ.png")
   var lm: CLLocationManager! = nil
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -293,7 +294,8 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
   
   // 撮影をする
   func takePhoto(sender: UITapGestureRecognizer){
-    
+    cameraView.image = orangeCameraImage
+    self.view.addSubview(cameraView)
     // ビデオ出力に接続する
     let videoConnection = avOutput.connectionWithMediaType(AVMediaTypeVideo)
     
@@ -317,6 +319,11 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
       //mySecondViewController.takenImage_accessor  = image
       mySecondViewController.takenImage = image
       // Viewの移動する.
+      if sender.state == .Ended {      //追加部分
+        self.cameraView.image = self.cameraImage
+        self.view.addSubview(self.cameraView)
+        print("\n\nPressing is finished!!!!!!!\n")
+      }
       self.presentViewController(mySecondViewController, animated: true, completion: nil)
       
       

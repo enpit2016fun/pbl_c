@@ -2,7 +2,9 @@ import UIKit
 import AVFoundation
 
 class CaptureController: UIViewController, UIGestureRecognizerDelegate {
-  //var loveImage = UIImage(named:"恋愛_180pt.png")
+  var cameraView: UIImageView!
+  var cameraImage = UIImage(named:"camera.png")
+  var orangeCameraImage = UIImage(named:"カメラオレンジ.png")
   // AVキャプチャセッション
   var avSession: AVCaptureSession!
   
@@ -18,11 +20,7 @@ class CaptureController: UIViewController, UIGestureRecognizerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // 画面タップで撮影
-    let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CaptureController.takePhoto(_:)))
-    tapGesture.delegate = self;
-    self.view.addGestureRecognizer(tapGesture)
-    
+  
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -158,31 +156,21 @@ class CaptureController: UIViewController, UIGestureRecognizerDelegate {
   
   // 画面になにか重ねて表示する
   func renderView() {
-    
-    // 角丸なLabelを作成
-    let labelHello: UILabel = UILabel(frame: CGRectMake(0, 0, self.view.frame.size.width - 40, 40))
-    labelHello.layer.masksToBounds = true
-    labelHello.layer.cornerRadius = 5.0
-    
-    labelHello.lineBreakMode = NSLineBreakMode.ByCharWrapping
-    labelHello.numberOfLines = 1
-    
-    // 文字と文字色、背景色をセット
-    labelHello.text = "画面タップで撮影&アルバム保存"
-    labelHello.textColor = UIColor.whiteColor()
-    labelHello.backgroundColor = UIColor.orangeColor()
-    
-    // 文字を中央寄せ、ウィンドウ中央に配置
-    labelHello.textAlignment = NSTextAlignment.Center
-    labelHello.layer.position = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height - 80)
-    
-    // ViewにLabelを追加.
-    self.view.addSubview(labelHello)
+    cameraView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.5 - 30  , y: self.view.bounds.height * 0.80, width: 60, height: 60))
+    // UIImageViewに画像を設定する.
+    cameraView.image = cameraImage
+    cameraView.userInteractionEnabled = true
+    let cameraTap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CaptureController.takePhoto(_:)))
+    cameraTap.delegate = self
+    cameraView.addGestureRecognizer(cameraTap)
+    self.view.addSubview(cameraView)
   }
   
   
   // 撮影をする
   func takePhoto(sender: UITapGestureRecognizer){
+      cameraView.image = orangeCameraImage
+      self.view.addSubview(cameraView)
     
     // ビデオ出力に接続する
     let videoConnection = avOutput.connectionWithMediaType(AVMediaTypeVideo)
@@ -207,6 +195,11 @@ class CaptureController: UIViewController, UIGestureRecognizerDelegate {
       //mySecondViewController.takenImage_accessor  = image
       mySecondViewController.takenImage = image
       // Viewの移動する.
+      if sender.state == .Ended {      //追加部分
+        self.cameraView.image = self.cameraImage
+        self.view.addSubview(self.cameraView)
+        print("\n\nPressing is finished!!!!!!!\n")
+      }
       self.presentViewController(mySecondViewController, animated: true, completion: nil)
       
       

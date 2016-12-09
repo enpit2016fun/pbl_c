@@ -91,7 +91,6 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
     self.luckyView.center = CGPoint(x:self.view.bounds.width * 0.5 ,y:self.view.bounds.height * 0.25)
     luckyView.layer.borderWidth = 0.5
     luckyView.layer.borderColor = UIColor.lightGrayColor().CGColor
-    self.luckyView.backgroundColor = UIColor.whiteColor()
     self.view.addSubview(luckyView)
     
     // 運勢タイプを表示するラベルを作成する
@@ -106,20 +105,20 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
     if selectedColor! == "白" {
       let lifeView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
       lifeView.center = CGPoint(x:self.view.bounds.width * 0.2,y:self.view.bounds.height * 0.5)
-      lifeView.image = loveImage
+      lifeView.image = lifeImage
       self.view.addSubview(lifeView)
       let lifeLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
       lifeLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.2 , y:self.view.bounds.height * 0.60)
       lifeLabel.textAlignment = NSTextAlignment.Center
       lifeLabel.textColor = UIColor.lightGrayColor()
-      lifeLabel.text = "健康運"
+      lifeLabel.text = "人生運"
       lifeLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
       self.view.addSubview(lifeLabel)
       let lifeDirectionLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
       lifeDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.2 , y:self.view.bounds.height * 0.65)
       lifeDirectionLabel.textAlignment = NSTextAlignment.Center
       lifeDirectionLabel.textColor = UIColor.orangeColor()
-      lifeDirectionLabel.text = "北東"
+      lifeDirectionLabel.text = "北西"
       lifeDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
       self.view.addSubview(lifeDirectionLabel)
       let depositView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
@@ -155,175 +154,232 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
       healthDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.8 , y:self.view.bounds.height * 0.65)
       healthDirectionLabel.textAlignment = NSTextAlignment.Center
       healthDirectionLabel.textColor = UIColor.orangeColor()
-      healthDirectionLabel.text = "北西"
+      healthDirectionLabel.text = "北東"
       healthDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
       self.view.addSubview(healthDirectionLabel)
+      self.luckyView.backgroundColor = UIColor.whiteColor()
+      self.view.addSubview(luckyView)
           
     }else if selectedColor! == "ピンク" {
-      let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
-      jobView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
-      // UIImageViewに画像を設定する.
-      jobView.image = jobImage
-      self.view.addSubview(jobView)
-      fortuneLabel.text = "仕事運"
-      for farr in fortuneArray {
-        print(farr.name!)
-        if (farr.name! == "仕事運"){
-          self.luckyView.backgroundColor = farr.color
-          colorName = farr.colorName!
-          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
-          self.view.addSubview(luckyLabel)
-          print(farr.name)
-          print(farr.color)
-          self.view.addSubview(luckyView)
-        }
-      }
+      let depositView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      depositView.center = CGPoint(x:self.view.bounds.width * 0.3,y:self.view.bounds.height * 0.5)
+      depositView.image = depositImage
+      self.view.addSubview(depositView)
+      let depositLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      depositLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.3 , y:self.view.bounds.height * 0.60)
+      depositLabel.textAlignment = NSTextAlignment.Center
+      depositLabel.textColor = UIColor.lightGrayColor()
+      depositLabel.text = "貯金運"
+      depositLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
+      self.view.addSubview(depositLabel)
+      let depositDirectionLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      depositDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.3 , y:self.view.bounds.height * 0.65)
+      depositDirectionLabel.textAlignment = NSTextAlignment.Center
+      depositDirectionLabel.textColor = UIColor.orangeColor()
+      depositDirectionLabel.text = "北"
+      depositDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
+      self.view.addSubview(depositDirectionLabel)
+      self.luckyView.backgroundColor = UIColor.magentaColor()
+      self.view.addSubview(luckyView)
+      let loveView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      loveView.center = CGPoint(x:self.view.bounds.width * 0.7,y:self.view.bounds.height * 0.5)
+      loveView.image = loveImage
+      self.view.addSubview(loveView)
+      let loveLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      loveLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.7 , y:self.view.bounds.height * 0.60)
+      loveLabel.textAlignment = NSTextAlignment.Center
+      loveLabel.textColor = UIColor.lightGrayColor()
+      loveLabel.text = "恋愛運"
+      loveLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
+      self.view.addSubview(loveLabel)
+      let loveDirectionLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      loveDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.7 , y:self.view.bounds.height * 0.65)
+      loveDirectionLabel.textAlignment = NSTextAlignment.Center
+      loveDirectionLabel.textColor = UIColor.orangeColor()
+      loveDirectionLabel.text = "南東"
+      loveDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
+      self.view.addSubview(loveDirectionLabel)
+      self.luckyView.backgroundColor = UIColor(red: 124.0/255, green: 96.0/255, blue: 53.0/255, alpha: 1.0)
+      self.view.addSubview(luckyView)
       
     }else if selectedColor! == "茶" {
-      let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
-      jobView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
-      // UIImageViewに画像を設定する.
-      jobView.image = moneyImage
-      self.view.addSubview(jobView)
-      fortuneLabel.text = "金運"
-      for farr in fortuneArray {
-        print(farr.name!)
-        if (farr.name! == "金運"){
-          self.luckyView.backgroundColor = farr.color
-          colorName = farr.colorName!
-          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
-          self.view.addSubview(luckyLabel)
-          print(farr.name!)
-          print(farr.color!)
-          self.view.addSubview(luckyView)
-        }
-      }
+      let familyView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      familyView.center = CGPoint(x:self.view.bounds.width * 0.3,y:self.view.bounds.height * 0.5)
+      familyView.image = familyImage
+      self.view.addSubview(familyView)
+      let familyLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      familyLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.3 , y:self.view.bounds.height * 0.60)
+      familyLabel.textAlignment = NSTextAlignment.Center
+      familyLabel.textColor = UIColor.lightGrayColor()
+      familyLabel.text = "家族運"
+      familyLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
+      self.view.addSubview(familyLabel)
+      let familyDirectionLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      familyDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.3 , y:self.view.bounds.height * 0.65)
+      familyDirectionLabel.textAlignment = NSTextAlignment.Center
+      familyDirectionLabel.textColor = UIColor.orangeColor()
+      familyDirectionLabel.text = "南西"
+      familyDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
+      self.view.addSubview(familyDirectionLabel)
+      let lifeView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      lifeView.center = CGPoint(x:self.view.bounds.width * 0.7,y:self.view.bounds.height * 0.5)
+      lifeView.image = lifeImage
+      self.view.addSubview(lifeView)
+      let lifeLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      lifeLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.7 , y:self.view.bounds.height * 0.60)
+      lifeLabel.textAlignment = NSTextAlignment.Center
+      lifeLabel.textColor = UIColor.lightGrayColor()
+      lifeLabel.text = "人生運"
+      lifeLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
+      self.view.addSubview(lifeLabel)
+      let lifeDirectionLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      lifeDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.7 , y:self.view.bounds.height * 0.65)
+      lifeDirectionLabel.textAlignment = NSTextAlignment.Center
+      lifeDirectionLabel.textColor = UIColor.orangeColor()
+      lifeDirectionLabel.text = "北西"
+      lifeDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
+      self.view.addSubview(lifeDirectionLabel)
+      self.luckyView.backgroundColor = UIColor(red: 124.0/255, green: 96.0/255, blue: 53.0/255, alpha: 1.0)
+      self.view.addSubview(luckyView)
+
       
       
     }else if selectedColor! == "赤" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
-      jobView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
-      // UIImageViewに画像を設定する.
-      jobView.image = depositImage
+      jobView.center = CGPoint(x:self.view.bounds.width/2,y:self.view.bounds.height * 0.5)
+      jobView.image = jobImage
       self.view.addSubview(jobView)
-      fortuneLabel.text = "貯金運"
-      for farr in fortuneArray {
-        print(farr.name!)
-        if (farr.name! == "貯金運"){
-          self.luckyView.backgroundColor = farr.color
-          colorName = farr.colorName!
-          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
-          self.view.addSubview(luckyLabel)
-          print(farr.name)
-          print(farr.color)
-          self.view.addSubview(luckyView)
-        }
-      }
+      let jobLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      jobLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.60)
+      jobLabel.textAlignment = NSTextAlignment.Center
+      jobLabel.textColor = UIColor.lightGrayColor()
+      jobLabel.text = "仕事運"
+      jobLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
+      self.view.addSubview(jobLabel)
+      let jobDirectionLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      jobDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.65)
+      jobDirectionLabel.textAlignment = NSTextAlignment.Center
+      jobDirectionLabel.textColor = UIColor.orangeColor()
+      jobDirectionLabel.text = "東"
+      jobDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
+      self.view.addSubview(jobDirectionLabel)
+      self.luckyView.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1.0)
+      self.view.addSubview(luckyView)
       
     }else if selectedColor! == "青" {
       let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
-      jobView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
-      // UIImageViewに画像を設定する.
-      jobView.image = healthImage
+      jobView.center = CGPoint(x:self.view.bounds.width/2,y:self.view.bounds.height * 0.5)
+      jobView.image = jobImage
       self.view.addSubview(jobView)
-      fortuneLabel.text = "健康運"
-      for farr in fortuneArray {
-        print(farr.name!)
-        if (farr.name! == "健康運"){
-          self.luckyView.backgroundColor = farr.color
-          colorName = farr.colorName!
-          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
-          self.view.addSubview(luckyLabel)
-          print(farr.name!)
-          print(farr.color!)
-          self.view.addSubview(luckyView)
-        }
-      }
+      let jobLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      jobLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.60)
+      jobLabel.textAlignment = NSTextAlignment.Center
+      jobLabel.textColor = UIColor.lightGrayColor()
+      jobLabel.text = "仕事運"
+      jobLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
+      self.view.addSubview(jobLabel)
+      let jobDirectionLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      jobDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.65)
+      jobDirectionLabel.textAlignment = NSTextAlignment.Center
+      jobDirectionLabel.textColor = UIColor.orangeColor()
+      jobDirectionLabel.text = "東"
+      jobDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
+      self.view.addSubview(jobDirectionLabel)
+      self.luckyView.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1.0)
+      self.view.addSubview(luckyView)
+      
+
+      self.luckyView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 1.0)
+      self.view.addSubview(luckyView)
       
     }else if selectedColor! == "紫" {
-      let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
-      jobView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
-      // UIImageViewに画像を設定する.
-      jobView.image = familyImage
-      self.view.addSubview(jobView)
-      fortuneLabel.text = "家族運"
-      for farr in fortuneArray {
-        print(farr.name!)
-        if (farr.name! == "家族運"){
-          self.luckyView.backgroundColor = farr.color
-          colorName = farr.colorName!
-          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
-          self.view.addSubview(luckyLabel)
-          print(farr.name)
-          print(farr.color)
-          self.view.addSubview(luckyView)
-        }
-      }
-      
+      let healthView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      healthView.center = CGPoint(x:self.view.bounds.width * 0.5,y:self.view.bounds.height * 0.5)
+      healthView.image = healthImage
+      self.view.addSubview(healthView)
+      let healthLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      healthLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.60)
+      healthLabel.textAlignment = NSTextAlignment.Center
+      healthLabel.textColor = UIColor.lightGrayColor()
+      healthLabel.text = "健康運"
+      healthLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
+      self.view.addSubview(healthLabel)
+      let healthDirectionLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      healthDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.65)
+      healthDirectionLabel.textAlignment = NSTextAlignment.Center
+      healthDirectionLabel.textColor = UIColor.orangeColor()
+      healthDirectionLabel.text = "北東"
+      healthDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
+      self.view.addSubview(healthDirectionLabel)
+      self.luckyView.backgroundColor = UIColor(red: 142.0/255, green: 0.0, blue: 204.0/255, alpha: 1.0)
+      self.luckyView.addSubview(luckyView)
     }else if selectedColor! == "緑" {
-      let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
-      jobView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
-      // UIImageViewに画像を設定する.
-      jobView.image = beautyImage
-      self.view.addSubview(jobView)
-      fortuneLabel.text = "美容運"
-      for farr in fortuneArray {
-        print(farr.name!)
-        if (farr.name! == "美容運"){
-          self.luckyView.backgroundColor = farr.color
-          colorName = farr.colorName!
-          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
-          self.view.addSubview(luckyLabel)
-          print(farr.name)
-          print(farr.color)
-          self.view.addSubview(luckyView)
-        }
-      }
-      
+      let beautyView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      beautyView.center = CGPoint(x:self.view.bounds.width * 0.5,y:self.view.bounds.height * 0.5)
+      beautyView.image = beautyImage
+      self.view.addSubview(beautyView)
+      let beautyLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      beautyLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.60)
+      beautyLabel.textAlignment = NSTextAlignment.Center
+      beautyLabel.textColor = UIColor.lightGrayColor()
+      beautyLabel.text = "美容運"
+      beautyLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
+      self.view.addSubview(beautyLabel)
+      let beautyDirectionLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      beautyDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.65)
+      beautyDirectionLabel.textAlignment = NSTextAlignment.Center
+      beautyDirectionLabel.textColor = UIColor.orangeColor()
+      beautyDirectionLabel.text = "南"
+      beautyDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
+      self.view.addSubview(beautyDirectionLabel)
+
+      self.luckyView.backgroundColor = UIColor.greenColor()
+      self.luckyView.addSubview(luckyView)
     }else if selectedColor! == "黄緑" {
-      let jobView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
-      jobView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
-      // UIImageViewに画像を設定する.
-      jobView.image = beautyImage
-      self.view.addSubview(jobView)
-      fortuneLabel.text = "美容運"
-      for farr in fortuneArray {
-        print(farr.name!)
-        if (farr.name! == "美容運"){
-          self.luckyView.backgroundColor = farr.color
-          colorName = farr.colorName!
-          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
-          self.view.addSubview(luckyLabel)
-          print(farr.name)
-          print(farr.color)
-          self.view.addSubview(luckyView)
-        }
-      }
-      
+      let familyView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      familyView.center = CGPoint(x:self.view.bounds.width * 0.5,y:self.view.bounds.height * 0.5)
+      familyView.image = familyImage
+      self.view.addSubview(familyView)
+      let familyLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      familyLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.60)
+      familyLabel.textAlignment = NSTextAlignment.Center
+      familyLabel.textColor = UIColor.lightGrayColor()
+      familyLabel.text = "家族運"
+      familyLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
+      self.view.addSubview(familyLabel)
+      let familyDirectionLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      familyDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.65)
+      familyDirectionLabel.textAlignment = NSTextAlignment.Center
+      familyDirectionLabel.textColor = UIColor.orangeColor()
+      familyDirectionLabel.text = "南西"
+      familyDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
+      self.view.addSubview(familyDirectionLabel)
+      self.luckyView.backgroundColor = UIColor(red: 171.0/255, green: 255.0/255, blue: 127.0/255, alpha: 1.0)
+      self.luckyView.addSubview(luckyView)
     }else {
-      let lifeView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
-      lifeView.center = CGPoint(x:self.view.bounds.width/4,y:self.view.bounds.height * 0.7)
-      // UIImageViewに画像を設定する.
-      lifeView.image = lifeImage
-      self.view.addSubview(lifeView)
-      fortuneLabel.text = "人生運"
-      for farr in fortuneArray {
-        print(farr.name!)
-        if (farr.name! == "人生運"){
-          self.luckyView.backgroundColor = farr.color
-          colorName = farr.colorName!
-          self.luckyLabel.text = "ラッキーカラー：\(farr.colorName!)"
-          self.view.addSubview(luckyLabel)
-          print(farr.name)
-          print(farr.color)
-          self.view.addSubview(luckyView)
-        }
-      }
-      
+      let moneyView = UIImageView(frame: CGRect(x:0, y:0, width: 70, height: 70))
+      moneyView.center = CGPoint(x:self.view.bounds.width/2,y:self.view.bounds.height * 0.5)
+      moneyView.image = moneyImage
+      self.view.addSubview(moneyView)
+      let moneyLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      moneyLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.60)
+      moneyLabel.textAlignment = NSTextAlignment.Center
+      moneyLabel.textColor = UIColor.lightGrayColor()
+      moneyLabel.text = "金運"
+      moneyLabel.font = UIFont(name:"HiraKakuProN-W6",size:15)
+      self.view.addSubview(moneyLabel)
+      let moneyDirectionLabel:UILabel = UILabel(frame: CGRectMake(0,0,50,20))
+      moneyDirectionLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.5 , y:self.view.bounds.height * 0.65)
+      moneyDirectionLabel.textAlignment = NSTextAlignment.Center
+      moneyDirectionLabel.textColor = UIColor.orangeColor()
+      moneyDirectionLabel.text = "西"
+      moneyDirectionLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
+      self.view.addSubview(moneyDirectionLabel)
+      self.luckyView.backgroundColor = UIColor.yellowColor()
+      self.luckyView.addSubview(luckyView)
     }
-    
-    
-    
+  
+  
     HomeImageView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.68 , y: self.view.bounds.height * 0.87, width: self.view.bounds.width * 0.3, height: 50))
     // UIImageViewに画像を設定する.
     HomeImageView.image = HomeImage
