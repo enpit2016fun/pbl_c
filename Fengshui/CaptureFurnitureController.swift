@@ -7,6 +7,7 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
   var text2Label: UILabel!
   var fortuneView:UIImageView!
   var statusView:UIView!
+  var backImage = UIImage(named:"site遷移.jpg")
   var loveImage = UIImage(named:"恋愛_180pt.png")
   var jobImage = UIImage(named:"仕事_180pt.png")
   var lifeImage = UIImage(named:"人生運.png")
@@ -15,7 +16,7 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
   var healthImage = UIImage(named:"健康_180pt.png")
   var depositImage = UIImage(named:"貯金_180pt.png")
   var beautyImage = UIImage(named:"美容_180pt.png")
-  
+  var backImageView: UIImageView!
   // AVキャプチャセッション
   
   var avSession: AVCaptureSession!
@@ -31,7 +32,7 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
   
   var cameraView: UIImageView!
   var cameraImage = UIImage(named:"camera.png")
-  var orangeCameraImage = UIImage(named:"orangeCamera.png")
+  var orangeCameraImage = UIImage(named:"カメラ紫.jpg")
   var lm: CLLocationManager! = nil
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -45,6 +46,8 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
     lm.startUpdatingLocation() // 位置情報更新機能起動
     lm.startUpdatingHeading() // コンパス更新機能起動
     
+    
+
     // 画面タップで撮影
     //    let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CaptureController.takePhoto(_:)))
     //    tapGesture.delegate = self;
@@ -262,7 +265,7 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
     cameraView.addGestureRecognizer(cameraTap)
     self.view.addSubview(cameraView)
     
-    fortuneView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.5 - 30 , y: self.view.bounds.height * 0.05, width: 60, height: 60))
+    fortuneView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.5 - 10  , y: self.view.bounds.height * 0.06, width: 60, height: 60))
     // UIImageViewに画像を設定する.
     self.statusView.addSubview(fortuneView)
     
@@ -270,10 +273,10 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
     
     
     locationLabel = UILabel(frame: CGRectMake(0,0,60,60))
-    locationLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.2 , y:self.view.bounds.height * 0.13)
+    locationLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.28 , y:self.view.bounds.height * 0.12)
     locationLabel.textAlignment = NSTextAlignment.Center
     locationLabel.text = ""
-    locationLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
+    locationLabel.font = UIFont(name:"HiraKakuProN-W6",size:30)
     self.statusView.addSubview(locationLabel)
     
     textLabel = UILabel(frame: CGRectMake(0,0,80,60))
@@ -291,8 +294,33 @@ class CaptureFurnitureController: UIViewController, UIGestureRecognizerDelegate,
     text2Label.text = "が上がります"
     text2Label.font = UIFont(name:"HiraKakuProN-W6",size:14)
     self.statusView.addSubview(text2Label)
+    
+    backImageView = UIImageView(frame: CGRect(x: self.view.bounds.width * 0.04  , y: self.view.bounds.height * 0.09, width: 30, height: 30))
+    // UIImageViewに画像を設定する.
+    backImageView.image = backImage
+    
+    backImageView.userInteractionEnabled = true
+    
+    let backTap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FindFurnitureController.backTapAction(_:)))
+    backTap.delegate = self
+    
+    backImageView.addGestureRecognizer(backTap)
+    // Viewに張りつけ.
+    self.statusView.addSubview(backImageView)
+    
+    
 
   }
+  
+  func backTapAction(sender: UITapGestureRecognizer){
+    // 遷移するViewを定義する.
+    self.dismissViewControllerAnimated(true, completion: nil)
+    //    let mySecondViewController: ImageAnalysisController = ImageAnalysisController()
+    //    mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+    //    // Viewの移動する.
+    //    self.presentViewController(mySecondViewController, animated: true, completion: nil)
+  }
+
   
   
   // 撮影をする

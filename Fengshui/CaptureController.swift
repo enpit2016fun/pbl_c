@@ -4,7 +4,7 @@ import AVFoundation
 class CaptureController: UIViewController, UIGestureRecognizerDelegate {
   var cameraView: UIImageView!
   var cameraImage = UIImage(named:"camera.png")
-  var orangeCameraImage = UIImage(named:"orangeCamera.png")
+  var orangeCameraImage = UIImage(named:"カメラ紫.jpg")
   // AVキャプチャセッション
   var avSession: AVCaptureSession!
   

@@ -29,7 +29,7 @@ class SelectFortuneController: UIViewController,UIGestureRecognizerDelegate{
   var loveImage = UIImage(named:"恋愛_180pt.png")
   var jobImage = UIImage(named:"仕事_180pt.png")
   var lifeImage = UIImage(named:"人生運.png")
-  var myImage = UIImage(named:"女の子アイコン")
+  var myImage = UIImage(named:"方角の中の女の子.jpg")
   var familyImage = UIImage(named:"家族_180pt.png")
   var moneyImage = UIImage(named:"金運_180pt.png")
   var healthImage = UIImage(named:"健康_180pt.png")

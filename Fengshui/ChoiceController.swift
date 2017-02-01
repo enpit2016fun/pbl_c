@@ -13,10 +13,10 @@ class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
   var furnitureView: UIImageView!
   var roomView: UIImageView!
   var fortuneView: UIImageView!
-  var titleImage = UIImage(named:"FortuneDoctor.png")
-  var furnitureImage = UIImage(named:"家具アイコン.png")
-  var roomImage = UIImage(named:"部屋アイコン.png")
-  var fortuneImage = UIImage(named:"運勢アイコン.png")
+  var titleImage = UIImage(named:"ホーム帯.jpg")
+  var furnitureImage = UIImage(named:"ホーム画面：家具から占う.jpg")
+  var roomImage = UIImage(named:"ホーム画面：部屋から占う.jpg")
+  var fortuneImage = UIImage(named:"ホーム画面：運勢から占う.jpg")
   var roomLabel: UILabel!
   var fortuneLabel: UILabel!
   var furnitureLabel: UILabel!
@@ -25,12 +25,12 @@ class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
     super.viewDidLoad()
     self.view.backgroundColor = UIColor.whiteColor()
     setupFortune()
-    titleView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 150 , y: self.view.bounds.height * 0.1, width: 300, height: 60))
+    titleView = UIImageView(frame: CGRect(x: 0 , y:self.view.bounds.height * 0.04  , width: self.view.bounds.width, height: self.view.bounds.height * 0.15))
     // UIImageViewに画像を設定する.
     titleView.image = titleImage
     self.view.addSubview(titleView)
     
-    furnitureView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 40 , y: self.view.bounds.height * 0.75, width: 80, height: 80))
+    furnitureView = UIImageView(frame: CGRect(x: 0 , y: self.view.bounds.height * 0.73, width: self.view.bounds.width, height: self.view.bounds.height * 0.27))
     // UIImageViewに画像を設定する.
     furnitureView.image = furnitureImage
     
@@ -43,14 +43,7 @@ class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
     self.view.addSubview(furnitureView)
 
     
-    furnitureLabel = UILabel(frame: CGRectMake(0,0,300,50))
-    furnitureLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.95)
-    furnitureLabel.textAlignment = NSTextAlignment.Center
-    furnitureLabel.text = "家具から占う"
-    furnitureLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
-    self.view.addSubview(furnitureLabel)
-    
-    fortuneView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 40 , y: self.view.bounds.height * 0.5, width: 80, height: 80))
+    fortuneView = UIImageView(frame: CGRect(x: 0 , y: self.view.bounds.height * 0.46, width: self.view.bounds.width, height: self.view.bounds.height * 0.27))
     // UIImageViewに画像を設定する.
     fortuneView.image = fortuneImage
     
@@ -61,20 +54,7 @@ class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
     fortuneTap.cancelsTouchesInView = false
     fortuneView.addGestureRecognizer(fortuneTap)
     self.view.addSubview(fortuneView)
-    
-    
-    fortuneLabel = UILabel(frame: CGRectMake(0,0,300,50))
-    fortuneLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.7)
-    fortuneLabel.textAlignment = NSTextAlignment.Center
-    fortuneLabel.text = "運勢から占う"
-    fortuneLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
-    self.view.addSubview(fortuneLabel)
-
-    
-
-
-    
-    roomView = UIImageView(frame: CGRect(x: self.view.bounds.width / 2 - 40 , y: self.view.bounds.height * 0.25, width: 80, height: 80))
+    roomView = UIImageView(frame: CGRect(x: 0 , y: self.view.bounds.height * 0.19, width: self.view.bounds.width, height: self.view.bounds.height * 0.27))
     // UIImageViewに画像を設定する.
     roomView.image = roomImage
     
@@ -86,13 +66,6 @@ class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
     roomTap.cancelsTouchesInView = false
     roomView.addGestureRecognizer(roomTap)
     self.view.addSubview(roomView)
-    // 家具占いを表示するラベルを作成する
-    roomLabel = UILabel(frame: CGRectMake(0,0,300,50))
-    roomLabel.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height * 0.45)
-    roomLabel.textAlignment = NSTextAlignment.Center
-    roomLabel.text = "部屋から占う"
-    roomLabel.font = UIFont(name:"HiraKakuProN-W6",size:20)
-    self.view.addSubview(roomLabel)
     // Do any additional setup after loading the view.
   }
   

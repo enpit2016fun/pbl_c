@@ -17,11 +17,11 @@ class ResultColorController: UIViewController,UIGestureRecognizerDelegate {
   var PictureView: UIImageView!
   var takenImage:UIImage?
   var parameter: [String: AnyObject] = [:]
-  var HomeImage = UIImage(named:"home.png")
+  var HomeImage = UIImage(named:"Home.jpg")
   var HomeImageView: UIImageView!
-  var SaveImage = UIImage(named:"save.png")
+  var SaveImage = UIImage(named:"save.jpg")
   var SaveImageView: UIImageView!
-  var backImage = UIImage(named:"back.png")
+  var backImage = UIImage(named:"Take-photo.png")
   var PhotoImageView: UIImageView!
   var hanteiView: UIImageView!
   var hanteiImage = UIImage(named:"たいへんよくできました.png")

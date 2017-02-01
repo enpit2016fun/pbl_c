@@ -28,11 +28,11 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
   var PictureView: UIImageView!
   var takenImage:UIImage?
   var parameter: [String: AnyObject] = [:]
-  var HomeImage = UIImage(named:"home.png")
+  var HomeImage = UIImage(named:"Home.jpg")
   var HomeImageView: UIImageView!
-  var SaveImage = UIImage(named:"sitePage.png")
+  var SaveImage = UIImage(named:"Site-page.jpg")
   var SaveImageView: UIImageView!
-  var PhotoImage = UIImage(named:"takePhoto_g.png")
+  var PhotoImage = UIImage(named:"Take-photo.jpg")
   var PhotoImageView: UIImageView!
   var hanteiView: UIImageView!
   var hantei1Image = UIImage(named:"たいへんよくできました.png")

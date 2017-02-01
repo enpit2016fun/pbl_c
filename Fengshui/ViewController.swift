@@ -5,8 +5,8 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
   var locationLabel: UILabel!
   var teachLabel: UILabel!
   var lm: CLLocationManager! = nil
-  var myImage = UIImage(named:"方位磁石.png")
-  var girlImage = UIImage(named:"女の子only.png")
+  var myImage = UIImage(named:"方角.jpg")
+  var girlImage = UIImage(named:"方角の中の女の子.jpg")
   var myRotateView:UIImageView! = nil
   var myDirectionView:UIImageView! = nil
   var selectFortune:String?
@@ -51,7 +51,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
     self.view.addSubview(teachLabel)
     // ボタンを生成する.
     nextButton = UIButton(frame: CGRectMake(0,0,self.view.bounds.width * 0.8,50))
-    nextButton!.backgroundColor = UIColor.orangeColor();
+    nextButton!.backgroundColor = UIColor(red:149/255,green:112/255,blue:170/255,alpha:1.0)
     nextButton!.layer.masksToBounds = true
     nextButton!.setTitle("OK", forState: .Normal)
     nextButton!.layer.cornerRadius = 10.0
@@ -107,7 +107,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
     //コンパスの値に応じて方角を表示
     if newHeading.magneticHeading >= 0 && newHeading.magneticHeading < 45 {
       if (selectedDirection == locationLabel.text){
-        locationLabel.textColor = UIColor.redColor()
+        locationLabel.textColor = UIColor(red:201/255,green:142/255,blue:172/255,alpha:1.0)
         self.nextButton!.enabled = true
         self.nextButton!.alpha = 1.0
       }else{
@@ -118,7 +118,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
       locationLabel.text = "北"
     } else if newHeading.magneticHeading >= 45 && newHeading.magneticHeading < 90  {
       if (selectedDirection == locationLabel.text){
-        locationLabel.textColor = UIColor.redColor()
+        locationLabel.textColor = UIColor(red:201/255,green:142/255,blue:172/255,alpha:1.0)
         self.nextButton!.enabled = true
         self.nextButton!.alpha = 1.0
       }else{
@@ -129,7 +129,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
       locationLabel.text = "北東"
     } else if newHeading.magneticHeading >= 90 && newHeading.magneticHeading < 135  {
       if (selectedDirection == locationLabel.text){
-        locationLabel.textColor = UIColor.redColor()
+        locationLabel.textColor = UIColor(red:201/255,green:142/255,blue:172/255,alpha:1.0)
         self.nextButton!.enabled = true
         self.nextButton!.alpha = 1.0
       }else{
@@ -140,7 +140,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
       locationLabel.text = "東"
     } else if newHeading.magneticHeading >= 135 && newHeading.magneticHeading < 180 {
       if (selectedDirection == locationLabel.text){
-        locationLabel.textColor = UIColor.redColor()
+        locationLabel.textColor = UIColor(red:201/255,green:142/255,blue:172/255,alpha:1.0)
         self.nextButton!.enabled = true
         self.nextButton!.alpha = 1.0
       }else{
@@ -151,7 +151,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
       locationLabel.text = "南東"
     } else if newHeading.magneticHeading >= 180 && newHeading.magneticHeading < 225  {
       if (selectedDirection == locationLabel.text){
-        locationLabel.textColor = UIColor.redColor()
+        locationLabel.textColor = UIColor(red:201/255,green:142/255,blue:172/255,alpha:1.0)
         self.nextButton!.enabled = true
         self.nextButton!.alpha = 1.0
       }else{
@@ -162,7 +162,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
       locationLabel.text = "南"
     } else if newHeading.magneticHeading >= 225 && newHeading.magneticHeading < 270  {
       if (selectedDirection == locationLabel.text){
-        locationLabel.textColor = UIColor.redColor()
+        locationLabel.textColor = UIColor(red:201/255,green:142/255,blue:172/255,alpha:1.0)
         self.nextButton!.enabled = true
         self.nextButton!.alpha = 1.0
       }else{
@@ -173,7 +173,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
       locationLabel.text = "南西"
     } else if newHeading.magneticHeading >= 270 && newHeading.magneticHeading < 315  {
       if (selectedDirection == locationLabel.text){
-        locationLabel.textColor = UIColor.redColor()
+        locationLabel.textColor = UIColor(red:201/255,green:142/255,blue:172/255,alpha:1.0)
         self.nextButton!.enabled = true
         self.nextButton!.alpha = 1.0
       }else{
@@ -184,7 +184,7 @@ class ViewController: UIViewController ,CLLocationManagerDelegate {
       locationLabel.text = "西"
     } else {
       if (selectedDirection == locationLabel.text){
-        locationLabel.textColor = UIColor.redColor()
+        locationLabel.textColor = UIColor(red:201/255,green:142/255,blue:172/255,alpha:1.0)
         self.nextButton!.enabled = true
         self.nextButton!.alpha = 1.0
       }else{
