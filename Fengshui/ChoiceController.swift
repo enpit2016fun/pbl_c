@@ -9,6 +9,8 @@
 import UIKit
 
 class ChoiceController: UIViewController,UIGestureRecognizerDelegate {
+  
+  //testtest
   var titleView: UIImageView!
   var furnitureView: UIImageView!
   var roomView: UIImageView!
