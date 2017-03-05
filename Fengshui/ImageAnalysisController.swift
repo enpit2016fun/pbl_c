@@ -100,7 +100,8 @@ class ImageAnalysisController: UIViewController,UIGestureRecognizerDelegate {
     print("selectedFortune::\(selectedFortune!)")
     
     // ラッキーカラーを表示するラベルを作成する
-    luckyLabel = UILabel(frame: CGRectMake(0,0,120,30))
+    //luckyLabel = UILabel(frame: CGRectMake(0,0,120,30))
+    luckyLabel = UILabel(frame: CGRectMake(0,0,self.view.bounds.height,30))
     luckyLabel.layer.position = CGPoint(x: self.view.bounds.width * 0.75 , y:self.view.bounds.height * 0.8)
     luckyLabel.textAlignment = NSTextAlignment.Center
     luckyLabel.font = UIFont(name:"HiraKakuProN-W6",size:9)
